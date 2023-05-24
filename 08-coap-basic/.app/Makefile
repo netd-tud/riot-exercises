@@ -5,8 +5,8 @@ APPLICATION = coap-example
 BOARD ?= pba-d-01-kw2x
 
 # SELECT A TASK
-# TASK_4 = 1
-TASK_5 = 1
+TASK_4 = 1
+# TASK_5 = 1
 
 ifdef TASK_4
   CFLAGS += -DTASK_4

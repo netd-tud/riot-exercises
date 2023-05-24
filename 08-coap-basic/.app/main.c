@@ -19,6 +19,12 @@ static msg_t _main_msg_queue[MAIN_QUEUE_SIZE];
 int main(void)
 {
     puts("CoAP example application");
+#ifdef TASK_4
+    puts("Task 4");
+#endif
+#ifdef TASK_5
+    puts("Task 5");
+#endif
     /* for the thread running the shell */
     msg_init_queue(_main_msg_queue, MAIN_QUEUE_SIZE);
     server_init();

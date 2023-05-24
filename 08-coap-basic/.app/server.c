@@ -81,7 +81,8 @@ void server_init(void)
  */
 static ssize_t _sensor_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, coap_request_ctx_t *ctx)
 {
-    saul_reg_t *device = *(saul_reg_t**)ctx;
+    const coap_resource_t *resource = ctx->resource;
+    saul_reg_t *device = *(saul_reg_t**)resource->context;
 
     /* initialize a new coap response */
     gcoap_resp_init(pdu, buf, len, COAP_CODE_CONTENT);

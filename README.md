@@ -10,7 +10,7 @@ with IoT technologies using Linux and RIOT-OS.
 
 **2. Clone this repository locally:**
 ```sh
-$ git clone --recurse-submodules https://github.com/smartuni/exercises.git
+$ git clone --recurse-submodules https://github.com/inetrg/exercises.git
 ```
 
 **3. Navigate to the repository and open an editor in the directory:**

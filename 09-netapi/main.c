@@ -37,6 +37,9 @@
 
 int main(void)
 {
+    msg_t msg_queue[MSG_QUEUE_SIZE];
+    msg_init_queue(msg_queue, MSG_QUEUE_SIZE);
+
     puts("NETAPI example.\n");
 
     /* buffer to read commands */

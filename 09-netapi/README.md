@@ -81,6 +81,12 @@ Note, that in an error case we just skip the interface all together and that the
 `gnrc_netapi_get()` contains the result in bytes, not in number of addresses, due to the generic
 nature of `GET`.
 
+You can try to ping another group using the shell command `ping`:
+
+```
+ping fe80::204:2519:1801:ae82
+```
+
 ## Task 1
 
 Register the application to receive IPv6 messages and handle them.
@@ -93,7 +99,7 @@ msg_t msg_queue[MSG_QUEUE_SIZE];
 msg_init_queue(msg_queue, MSG_QUEUE_SIZE);
 ```
 
-`MSG_QUEUE_SIZE` is already defined in `main.c` and must be a power of 2.
+This is already prepared in `main.c` for `ping` to work. `MSG_QUEUE_SIZE` must be a power of 2.
 
 You can register for packets of a certain type (protocol) and context (the experimental protocol
 number 253 in our case) using `gnrc_netreg_register()` from `net/gnrc/netreg.h` (which is provided

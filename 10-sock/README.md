@@ -103,7 +103,8 @@ while (1) {
 ```
 
 Using this, write a shell command `udps` that receives a port as an argument, which starts a thread
-that receives UDP messages on that given port.
+that receives UDP messages on that given port. Test this with another group using their
+implementation from Task 01.
 
 ## Task 03
 
@@ -160,4 +161,5 @@ receive.
 
 Last, add a shell command that stops a running UDP server. Use `event_post()` to call an event
 handler on the event queue of the `sock`. That event handler in turn can call `sock_udp_close()` on
-the `sock` object of the server.
+the `sock` object of the server. Again, test this with another group, using their implementation
+from Task 01.

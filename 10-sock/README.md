@@ -28,7 +28,7 @@ USEMODULE += sock_async_event
 USEMODULE += sock_util
 ```
 
-## Task 01
+## Task 1
 
 Implement a simple UDP client.
 
@@ -64,7 +64,7 @@ optional), and `1234` being the port.
 Coordinating with another group, you can use the application [`example/gnrc_networking` in
 `RIOT`](../RIOT/examples/gnrc_networking) to test this.
 
-## Task 02
+## Task 2
 
 Implement a simple UDP server.
 
@@ -104,9 +104,9 @@ while (1) {
 
 Using this, write a shell command `udps` that receives a port as an argument, which starts a thread
 that receives UDP messages on that given port. Test this with another group using their
-implementation from Task 01.
+implementation from Task 1.
 
-## Task 03
+## Task 3
 
 Use events to implement a UDP server.
 
@@ -156,10 +156,10 @@ int main(void) {
 }
 ```
 
-With that knowledge, modify your application from Task 02 to use events instead of blocking on
+With that knowledge, modify your application from Task 2 to use events instead of blocking on
 receive.
 
 Last, add a shell command that stops a running UDP server. Use `event_post()` to call an event
 handler on the event queue of the `sock`. That event handler in turn can call `sock_udp_close()` on
 the `sock` object of the server. Again, test this with another group, using their implementation
-from Task 01.
+from Task 1.

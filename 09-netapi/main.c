@@ -20,13 +20,27 @@
 #include "msg.h"
 #include "net/ipv6/addr.h"
 #include "net/gnrc.h"
+#include "net/gnrc/ipv6/hdr.h"
+#include "net/utils.h"
+#include "net/netif.h"
 #include "od.h"
+#include "shell.h"
+#include "thread.h"
 
 #define MSG_QUEUE_SIZE  8
+
+/* [TASK 2: Move reception code to thread handler here] */
+
+/* [TASK 2: Add shell command handler for sending here] */
+
+/* [TASK 2: register your shell command handler here] */
 
 int main(void)
 {
     puts("NETAPI example.\n");
+
+    /* buffer to read commands */
+    char line_buf[SHELL_DEFAULT_BUFSIZE];
 
     /* get interfaces and print their addresses */
     gnrc_netif_t *netif = NULL;
@@ -56,6 +70,9 @@ int main(void)
     /* [TASK 1: receive packet here] */
 
     /* [TASK 1: unregister from IPv6 protocol number 253 here] */
+
+    /* run the shell, this will block the thread waiting for incoming commands */
+    shell_run(NULL, line_buf, SHELL_DEFAULT_BUFSIZE);
 
     /* main thread exits */
     return 0;

@@ -43,7 +43,7 @@ make flash term
 ```
 
 It will show the IPv6 address for the network interface—you might need to reset your node.
-Alternatively, you can use the `ifconfig` command in the RIOT shell.
+Alternatively, you can use the `ifconfig` shell command.
 
 ```
 ifconfig
@@ -114,6 +114,10 @@ following that and the lowest layer header being last.
 Remember to release packets after you used them using `gnrc_pktbuf_release()`.
 Otherwise, you will create memory leaks.
 
+`net/gnrc/netif/hdr.h` and `net/ipv6/hdr.h` contain helper functions to print the respective headers
+and the payload can be dumped using `od_hex_dump()` from `od.h` or as string using `printf()` with
+the `%.*s` format string.
+
 ```C
 while (1) {
     msg_t msg;
@@ -124,12 +128,19 @@ while (1) {
         gnrc_pktsnip_t *pkt = msg.content.ptr;
 
         if (pkt->next) {
+            if (pkt->next->next) {
+                puts("=== Link layer header ===");
+                gnrc_netif_hdr_print(pkt->next->next->data);
+            }
             /* print IPv6 header */
-            od_hex_dump(pkt->next->data, pkt->next->size, OD_WIDTH_DEFAULT);
+            puts("=== IPv6 header ===");
+            ipv6_hdr_print(pkt->next->data);
         }
 
         /* print IPv6 payload */
+        puts("=== IPv6 payload (hex) ===");
         od_hex_dump(pkt->data, pkt->size, OD_WIDTH_DEFAULT);
+        printf("=== IPv6 payload (string) === \"%.*s\"\n", pkt->size, (char *)pkt->data);
 
         gnrc_pktbuf_release(pkt);
     }
@@ -145,3 +156,100 @@ gnrc_netreg_unregister(GNRC_NETTYPE_IPV6, &server);
 
 Now you can receive IPv6 packets for the experimental transport protocol 253, but to test this?
 Let us exchange data with other groups by sending packets!
+
+## Task 2
+
+Sending IPv6 packets.
+
+First, we need to move the reception to its own thread, so we can still use the shell in the main
+thread. Revisit the [Threads excercise](../06-threads) for that. Remember that the message queue
+from Task 1 needs to be initialized for the new thread!
+
+Now we implement sending as a shell command that expects two arguments: the destination address and
+a string message. You can also revisit the [Shell excercise](../03-shell) for more on shell
+.
+
+```C
+int send_packet(int argc, char **argv)
+{
+    if (argc != 3) {
+        puts("usage: send <IPv6 address> <message>");
+        puts("Note: to send multiple words wrap the message in \"\"");
+        return 1;
+    }
+
+    /* Shell command */
+}
+
+SHELL_COMMAND(send, "Send a message over IPv6", send_packet);
+```
+
+You can parse the IPv6 address (including the network interface ID in `%<id>` notation) using
+the `netutils_get_ipv6()` function from the `net/utils.h` header:
+
+```C
+netif_t *netif;
+ipv6_addr_t addr;
+if (netutils_get_ipv6(&addr, &netif, argv[1]) < 0) {
+    puts("Unable to parse IPv6 address\n");
+    return 1;
+}
+```
+
+The packet is constructed as a linked list of PKTSNIPs using `gnrc_pktsnip_add()`. In GNRC they are
+in the correct order (from lowest header to payload) for sending.
+
+`net/gnrc/netif/hdr.h` and `net/ipv6/hdr.h` also contain helper functions for building the
+respective headers. However, the arguments for those functions are limited, so they might need
+extra handling for special fields, such as the protocol number in the IP header and GNRC-specific
+network interface values in the link layer.
+
+```C
+gnrc_pktsnip_t *payload, *ip;
+ipv6_hdr_t *ip_hdr;
+size_t payload_size = strlen(argv[2]);
+
+/* start packet with payload */
+payload = gnrc_pktbuf_add(NULL, argv[2], payload_size, GNRC_NETTYPE_UNDEF);
+if (payload == NULL) {
+    puts("Unable to copy message to packet buffer");
+    return 1;
+}
+/* add IPv6 header with payload as next header */
+ip = gnrc_ipv6_hdr_build(payload, NULL, &addr);
+if (ip == NULL) {
+    puts("Unable to allocate IPv6 header");
+    gnrc_pktbuf_release(payload);
+    return 1;
+}
+/* set IPv6 next header to experimental protocol number 253 */
+ip_hdr = ip->data;
+ip_hdr->nh = 253;
+if (netif != NULL) {
+    /* add link layer if netif is provided in argv[1] */
+    gnrc_pktsnip_t *netif_hdr = gnrc_netif_hdr_build(NULL, 0, NULL, 0);
+    if (netif_hdr == NULL) {
+        puts("Unable to allocate netif header");
+        gnrc_pktbuf_release(ip);
+        return 1;
+    }
+    /* set GNRC specific network interface values */
+    gnrc_netif_hdr_set_netif(netif_hdr->data,
+                             container_of(netif, gnrc_netif_t, netif));
+    /* prepend link layer header to IP packet */
+    ip = gnrc_pkt_prepend(ip, netif_hdr);
+}
+```
+
+The constructed packet can send be send to the IPv6-handling module (`gnrc_ipv6`) using the
+`gnrc_netapi_dispatch_send()` helper function. This function looks up all registered protocol
+handlers and uses `GNRC_NETAPI_MSG_TYPE_SND` to dispatch the packet to these.
+
+```C
+if (!gnrc_netapi_dispatch_send(GNRC_NETTYPE_IPV6,
+                               GNRC_NETREG_DEMUX_CTX_ALL, ip)) {
+    printf("Unable to locate IP thread");
+    gnrc_pktbuf_release(ip);
+    return 1;
+}
+```

@@ -39,14 +39,14 @@ exposed via the `net/gnrc.h` header file:
 Flash the application to your node and open a terminal.
 
 ```sh
-make flash term
+$ make flash term
 ```
 
 It will show the IPv6 address for the network interface—you might need to reset your node.
 Alternatively, you can use the `ifconfig` shell command.
 
-```
-ifconfig
+```sh
+> ifconfig
 ```
 
 `main.c` shows how to `GET` the IPv6 addresses of all interfaces of a node.
@@ -83,8 +83,8 @@ nature of `GET`.
 
 You can try to ping another group using the shell command `ping`:
 
-```
-ping fe80::204:2519:1801:ae82
+```sh
+> ping fe80::204:2519:1801:ae82
 ```
 
 ## Task 1

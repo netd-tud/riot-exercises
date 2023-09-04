@@ -127,7 +127,6 @@ the `%.*s` format string.
 ```C
 while (1) {
     msg_t msg;
-    gnrc_pktsnip_t *pkt;
 
     msg_receive(&msg);
     if (msg.type == GNRC_NETAPI_MSG_TYPE_RCV) {

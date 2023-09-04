@@ -182,6 +182,7 @@ int send_packet(int argc, char **argv)
         return 1;
     }
 
+    (void)argv;
     /* Shell command */
 }
 

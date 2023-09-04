@@ -167,12 +167,11 @@ Let us exchange data with other groups by sending packets!
 Sending IPv6 packets.
 
 First, we need to move the reception to its own thread, so we can still use the shell in the main
-thread. Revisit the [Threads excercise](../06-threads) for that. Remember that the message queue
+thread. Revisit the [Threads exercise](../06-threads) for that. Remember that the message queue
 from Task 1 needs to be initialized for the new thread!
 
 Now we implement sending as a shell command that expects two arguments: the destination address and
-a string message. You can also revisit the [Shell excercise](../03-shell) for more on shell
-.
+a string message. You can also revisit the [Shell exercise](../03-shell) for more on shell.
 
 ```C
 int send_packet(int argc, char **argv)

@@ -76,7 +76,7 @@ $ make all flash term
 
 Add a new CoAP resource to the server to interact with LEDs on the board. Upon a
 GET request it should return the status of the specific LED. When a PUT request
-is received, the payload should used to set the new status of the LED.
+is received, the payload should be used to set the new status of the LED.
 
 **NOTE: The CoAP server is implemented in `server.c`, that's where you are going**
 **to work.**
@@ -233,7 +233,7 @@ for clarity):
 <coap://[fd00:dead:beef::1]/sensors/light>;rt="light-lux";if="sensor";obs
 ```
 
-This list of links contains 3 elements. Link in a list are separated by `,`. A
+This list of links contains 3 elements. Links in a list are separated by `,`. A
 link is composed by a URI (enclosed in `< >`) and zero or more attributes. Each
 attribute is separated by `;`. An attribute may or may not have a value. The key
 and the value are separated by `=`. Attributes are key/values, expressing extra
@@ -252,7 +252,7 @@ information about the link. Some examples of attributes are: content type
 Use the information from the `/.well-known/core` to find resources exposing
 temperature and humidity readings of the room.
 
-**1. Using the provided IP address, perform a GET request to the nodes**
+**1. Using the provided IP address, perform a GET request to the node's**
 **`/.well-known/core` resource to find which resources it exposes.**
 **Use the `coap` shell command as in task 1.**
 
@@ -318,4 +318,4 @@ $ git push upstream pr/add_my_sensors
 ```
 **When prompted for a password, use your token.**
 
-**8. Create a new ull request using GitHub website**
+**8. Create a new pull request using the GitHub website**

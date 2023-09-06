@@ -1,7 +1,7 @@
 # Threads
 
 Threads are functions designed to be scheduled and executed by the CPU
-independently. An example of thread is the `main()` function.
+independently. An example of a thread is the `main()` function.
 In single-core MCUs only one thread can have control of the CPU at a given time.
 The scheduler is in charge of deciding which thread takes control, depending on
 its state and priority. Usually threads are waiting for some event to occur,
@@ -28,8 +28,8 @@ char thread_stack[THREAD_STACKSIZE_DEFAULT];   /* Stack for the thread */
 To create a new thread, we use `thread_create()` from `thread.h`:
 
 ```C
-kernel_pid_t my_thread;                         /* Stores the id */
-void *thread_handler(void *arg) {        /* Thread handler */
+kernel_pid_t my_thread;            /* Stores the id */
+void *thread_handler(void *arg) {  /* Thread handler */
     /* some task for our thread */
 }
 

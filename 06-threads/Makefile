@@ -1,5 +1,5 @@
 # name of your application
-APPLICATION = threads_and_events
+APPLICATION = thread
 
 # If no BOARD is found in the environment, use this default:
 BOARD ?= pba-d-01-kw2x

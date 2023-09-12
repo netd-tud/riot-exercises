@@ -1,6 +1,6 @@
 # GPIOs
 
-General Purpose Input/Outputs (GPIOs) are a peripheral that allow
+General Purpose Input/Outputs (GPIOs) are a peripheral that allows
 microcontrollers to interact with the physical world. They are 
 commonly known as pins. As the name suggests, they can be either configured as
 digital inputs or digital outputs. That is, they can read a digital value from
@@ -74,7 +74,7 @@ Use an interrupt to detect the value change.
 
 **1. The same way as done in the previous task, initialize the GPIO pin for the LED1.**
 **LED1 is connected to the Port D, Pin 4.**
-**Define `led1` outside the main function**
+**Define `led1` outside the main function.**
 
 **2. Write a callback function, which will be called when an interrupt occurs.**
 **Whenever the button is pressed, the pin value is set to `0`.**
@@ -101,4 +101,4 @@ gpio_t button = GPIO_PIN(PORT_D, 1);
 gpio_init_int(button, GPIO_IN_PU, GPIO_BOTH, button_callback, NULL);
 ```
 
-**4. Build and flash the application:**
+**4. Build and flash the application.**

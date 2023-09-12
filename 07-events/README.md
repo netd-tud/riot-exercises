@@ -58,7 +58,7 @@ int main(void)
 }
 ```
 
-As mentioned earlier, RIOT provides module three predefined queues via the
+As mentioned earlier, RIOT provides three predefined queues via the
 `event_thread` module. These queues are defined in the `event/thread.h` header.
 
 ```c
@@ -78,7 +78,7 @@ As mentioned earlier, RIOT provides module three predefined queues via the
 
 ## Post an event
 
-To post events use `event_post()` function. We can post events from interrupts
+To post events use the `event_post()` function. We can post events from interrupts
 or from other threads. Events are executed in a first in first out (FIFO)
 scheme.
 
@@ -148,13 +148,13 @@ void event_handler(event_t *event)
 event_t event = { .handler = event_handler };
 ```
 
-**3. Add the `event_thread` module to the application Makefile:
+**3. Add the `event_thread` module to the application Makefile:**
 
 ```Makefile
 USEMODULE += event_thread
 ```
 
-**4. Include the `event/thread.h` header to `main.c`
+**4. Include the `event/thread.h` header to `main.c`**
 
 ```c
 #include "event/thread.h"

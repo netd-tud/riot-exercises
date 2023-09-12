@@ -35,7 +35,7 @@ Implement a simple UDP client.
 As long as an endpoint is provided, `sock_udp_send()` does not require an initialized `sock` object.
 
 ```C
-int res
+int res;
 sock_udp_ep_t remote = { 0 };
 
 if (sock_udp_str2ep(&remote, addr_str) < 0) {

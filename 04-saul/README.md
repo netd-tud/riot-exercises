@@ -70,7 +70,7 @@ value occupies (i.e. how many positions of the `val` array are valid). Let's
 assume that the current temperature is 25.5 °C. As we are reading a temperature
 value, `dimensions` will be `1`. If we check the value of `result.unit`, it will
 equal `UNIT_TEMP_C`. In the particular case of our sensor, the value is
-expressed with a factor of `10^-3`, so `scale` will contain the value `-3`. The
+expressed with a factor of `10^-2`, so `scale` will contain the value `-2`. The
 value stored in `val[0]` will be `2550`.
 
 For more information about phydat, like units and provided functions, check the

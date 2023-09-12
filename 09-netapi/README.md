@@ -246,7 +246,7 @@ if (netif != NULL) {
 }
 ```
 
-The constructed packet can send be send to the IPv6-handling module (`gnrc_ipv6`) using the
+The constructed packet can be sent to the IPv6-handling module (`gnrc_ipv6`) using the
 `gnrc_netapi_dispatch_send()` helper function. This function looks up all registered protocol
 handlers and uses `GNRC_NETAPI_MSG_TYPE_SND` to dispatch the packet to these.
 

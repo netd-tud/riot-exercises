@@ -18,6 +18,12 @@ exposes a simple API that allows to use GPIOs independently of the underlying
 platform. In this example we will make use of the most common functionalities
 of the GPIO module.
 
+To change to this directory from a different exercise, use the following command in the terminal.
+
+```sh
+$ cd ../05-gpios
+```
+
 ## Task 1
 
 Drive an LED using the GPIO API. So far we have operated on LEDs using a series

@@ -16,6 +16,12 @@ To learn more about SAUL and the registry, check the online documentation
 [here](https://doc.riot-os.org/group__drivers__saul.html) and
 [here](https://doc.riot-os.org/group__sys__saul__reg.html).
 
+To change to this directory from a different exercise, use the following command in the terminal.
+
+```sh
+$ cd ../04-saul
+```
+
 ## Task 1
 
 Test the application and verify that when the sensed temperature surpasses the

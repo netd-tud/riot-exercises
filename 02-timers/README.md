@@ -21,6 +21,12 @@ USEMODULE += ztimer_sec  # second precision
 
 To learn more about the `ztimer` module, visit the [documentation page](https://doc.riot-os.org/group__sys__ztimer.html).
 
+To change to this directory from a different exercise, use the following command in the terminal.
+
+```sh
+$ cd ../02-timers
+```
+
 ## Task 1
 **1. Build and flash the application. Connect to the serial port:**
 ```sh

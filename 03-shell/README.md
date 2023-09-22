@@ -10,6 +10,12 @@ module will try to find the command string among the registered commands. If it
 finds it, it calls the corresponding handler function with the incoming
 arguments.
 
+To change to this directory from a different exercise, use the following command in the terminal.
+
+```sh
+$ cd ../03-shell
+```
+
 ## Implementing commands
 
 Let's see an example. To add a new command we need to do two things. First, we

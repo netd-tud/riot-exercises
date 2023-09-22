@@ -34,6 +34,12 @@ exposed via the `net/gnrc.h` header file:
 #include "net/gnrc.h"
 ```
 
+To change to this directory from a different exercise, use the following command in the terminal.
+
+```sh
+$ cd ../09-netapi
+```
+
 ## Getting the IPv6 addresses of a network interface
 
 Flash the application to your node and open a terminal.

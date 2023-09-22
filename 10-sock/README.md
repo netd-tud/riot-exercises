@@ -28,6 +28,12 @@ USEMODULE += sock_async_event
 USEMODULE += sock_util
 ```
 
+To change to this directory from a different exercise, use the following command in the terminal.
+
+```sh
+$ cd ../10-sock
+```
+
 ## Task 1
 
 Implement a simple UDP client.

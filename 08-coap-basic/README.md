@@ -16,6 +16,12 @@ We will be using the gcoap module from RIOT. For more detailed information and
 advanced usages, check
 [the documentation](https://doc.riot-os.org/group__net__gcoap.html).
 
+To change to this directory from a different exercise, use the following command in the terminal.
+
+```sh
+$ cd ../08-coap-basic
+```
+
 ## Task 1
 
 Verify that your device is exposing the resource correctly.

@@ -9,6 +9,16 @@ Build the application, flash the firmware and connect to the board through the s
 
 **1. Open a terminal and navigate to the application directory.**
 
+```sh
+$ cd exercises/01-hello-world
+```
+
+To change to this directory from a different exercise, use the following command in the terminal.
+
+```sh
+$ cd ../01-hello-world
+```
+
 **2. Build the application by executing GNU Make.**
 ```sh
 $ make all

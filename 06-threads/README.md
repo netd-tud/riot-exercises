@@ -54,6 +54,12 @@ RIOT scheduler executes a thread until one of the following conditions occurs:
 For more information visit the
 [thread documentation page](https://doc.riot-os.org/group__core__thread.html).
 
+To change to this directory from a different exercise, use the following command in the terminal.
+
+```sh
+$ cd ../06-threads
+```
+
 ## A note on interrupts
 
 We usually don't want to perform lengthy tasks from interrupt contexts, as they

@@ -27,6 +27,12 @@ To learn more about this mechanism, visit the
 
 For this experience, we focus only on the basic Event Queue support.
 
+To change to this directory from a different exercise, use the following command in the terminal.
+
+```sh
+$ cd ../07-events
+```
+
 ## Create an event
 
 Event tasks are `event_t` objects that point to a handler function:

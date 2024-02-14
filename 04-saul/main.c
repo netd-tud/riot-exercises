@@ -13,7 +13,7 @@
 #include "saul_reg.h"
 #include "board.h"
 
-#define TEMPERATURE_THRESHOLD 2600 /* factor of 10^-3 */
+#define TEMPERATURE_THRESHOLD 2600 /* factor of 10^-2 */
 
 int main(void)
 {

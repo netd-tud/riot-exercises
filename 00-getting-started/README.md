@@ -17,9 +17,9 @@ let's understand what is inside the IoT Kit in front of you.
 When opening the IoT Kit, you will find the following content:
 
 1. [**Raspberry Pi**](https://www.raspberrypi.com/documentation/computers/getting-started.html)
-  already completely setup as development machine throughout these exercises.
+  already completely setup to be used as development machine throughout these exercises.
 2. **Power Adapter for the Raspberry Pi**
-3. [**Adafruit Feather Sense**](https://learn.adafruit.com/adafruit-feather-sense):
+3. [**Adafruit Feather Sense**](https://learn.adafruit.com/adafruit-feather-sense) (RFM98 @ 433 MHz):
   an IoT device featuring wireless connectivity and many on-board sensors
 4. **USB Cable** to connect the Feather Sense to the development machine
 5. [**Adafruit LoRa Radio FeatherWing**](https://learn.adafruit.com/radio-featherwing):
@@ -60,7 +60,7 @@ the easiest option is to connect the Raspberry Pi via Ethernet to your home rout
 Alternatively, you may add the credentials of your home WiFi to the Raspberry Pi
 as explained here: https://weworkweplay.com/play/automatically-connect-a-raspberry-pi-to-a-wifi-network/
 
-If you prefer to develop without the Raspberry Pi on your own machine,
+If you prefer to develop without the Raspberry Pi on your own Linux machine,
 you can find the [general instructions to set up you RIOT development environment](https://doc.riot-os.org/getting-started.html)
 and the [specific ones for the Feather Sense](https://doc.riot-os.org/group__boards__feather-nrf52840-sense.html)
 in the RIOT documentation.

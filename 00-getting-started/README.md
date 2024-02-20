@@ -10,11 +10,13 @@ RIOT aims to implement all relevant open standards supporting an Internet of Thi
 Pretty cool, right?
 
 But before getting started with coding and real hardware,
-let's understand what is inside the IoT Kit in front of you.
+let's understand what is inside the RIOT Kit in front of you.
 
-## IoT Kit Content
+<img src="RIOT-Kit-closed.jpg" width="25%">
 
-When opening the IoT Kit, you will find the following content:
+## RIOT Kit Content
+
+When opening the RIOT Kit, you will find the following content:
 
 1. [**Raspberry Pi**](https://www.raspberrypi.com/documentation/computers/getting-started.html)
   already completely setup to be used as development machine throughout these exercises.
@@ -27,7 +29,7 @@ When opening the IoT Kit, you will find the following content:
 6. **Jumper Cables** (12x) to connect external devices such as LEDs or buttons to the Feather Sense
 7. **Breadboard** to build semi-permanent prototypes of electronic circuits
 
-<img src="IoT-Kit.png" width="50%">
+<img src="RIOT-Kit.png" width="50%">
 
 ## Hardware Setup
 
@@ -53,9 +55,9 @@ Cloud9 IDE lets you browse through the files using the directory tree on the lef
 write code and preview Markdown (such as this document) on the right,
 and access the console of the Raspberry Pi on the lower right.
 
-## Working with the IoT Kit at home
+## Working with the RIOT Kit at home
 
-If you want to work with the IoT Kit at home,
+If you want to work with the RIOT Kit at home,
 the easiest option is to connect the Raspberry Pi via Ethernet to your home router.
 Alternatively, you may add the credentials of your home WiFi to the Raspberry Pi
 as explained here: https://weworkweplay.com/play/automatically-connect-a-raspberry-pi-to-a-wifi-network/

@@ -2,7 +2,7 @@
 APPLICATION = coap-example
 
 # If no BOARD is found in the environment, use this default:
-BOARD ?= pba-d-01-kw2x
+BOARD ?= feather-nrf52840-sense
 
 # SELECT A TASK
 TASK_4 = 1

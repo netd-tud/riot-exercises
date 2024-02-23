@@ -13,7 +13,7 @@
 #include "saul_reg.h"
 #include "board.h"
 
-#define TEMPERATURE_THRESHOLD 2600 /* factor of 10^-2 */
+#define TEMPERATURE_THRESHOLD 2400 /* factor of 10^-2 */
 
 int main(void)
 {
@@ -51,11 +51,9 @@ int main(void)
         /* check if the temperature value is above the threshold */
         if (temperature.val[0] >= TEMPERATURE_THRESHOLD) {
             LED0_ON;
-            LED1_OFF;
         }
         else {
             LED0_OFF;
-            LED1_ON;
         }
 
         /* wait for 500 ms */

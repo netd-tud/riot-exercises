@@ -26,7 +26,7 @@ int main(void)
 
     /* we can configure an event to occur in the future by setting a timer */
     ztimer_t timeout;                     /* create a new timer */
-    timeout.callback = message_callback; /* set the function to execute */
+    timeout.callback = message_callback;  /* set the function to execute */
     timeout.arg = "Timeout!";             /* set the argument that the function will receive */
     ztimer_set(ZTIMER_SEC, &timeout, 2);  /* set the timer to trigger in 2 seconds */
 

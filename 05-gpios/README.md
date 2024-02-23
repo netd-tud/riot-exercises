@@ -31,18 +31,18 @@ write particular registers that control the GPIO peripheral.
 ```
 
 **2. Outside the `main` function define the LED0 GPIO pin as an output.**
-**In the `pba-d-01-kw2x` we are currently using, the LED0 is connected to the**
-**Port D, Pin 6:**
+**In the `feather-nrf52840-sense` we are currently using, the LED0 is connected to the**
+**Port 1, Pin 9:**
 ```C
-gpio_t led0 = GPIO_PIN(PORT_D, 6);
+gpio_t led0 = GPIO_PIN(1, 9);
 gpio_mode_t led0_mode = GPIO_OUT;
 ```
 
-**3. The LEDs on the board are on when the GPIO outputs `0`.**
-**Inside the `main` function, start by initializing the GPIO and turning the LED off (setting the GPIO to `1`):**
+**3. The LEDs on the board are on when the GPIO outputs `1`.**
+**Inside the `main` function, start by initializing the GPIO and turning the LED off (setting the GPIO to `0`):**
 ```C
 gpio_init(led0, led0_mode);
-gpio_set(led0);
+gpio_clear(led0);
 ```
 
 **4. Inside a loop, periodically toggle the value of the GPIO:**
@@ -73,7 +73,7 @@ Turn the LED1 on whenever a button is pressed, and turn it off when the button h
 Use an interrupt to detect the value change.
 
 **1. The same way as done in the previous task, initialize the GPIO pin for the LED1.**
-**LED1 is connected to the Port D, Pin 4.**
+**LED1 is connected to the Port 1, Pin 10.**
 **Define `led1` outside the main function.**
 
 **2. Write a callback function, which will be called when an interrupt occurs.**
@@ -83,19 +83,19 @@ void button_callback (void *arg)
 {
     (void) arg; /* the argument is not used */
     if (!gpio_read(button)) {
-        gpio_clear(led1);
+        gpio_set(led1);
     }
     else {
-        gpio_set(led1);
+        gpio_clear(led1);
     }
 }
 ```
 
-**3. Initialize the GPIO pin connected to the S2 button in your board as input with an internal pull-up.**
-**The button S2 is connected to the Port D, Pin 1.**
+**3. Initialize the GPIO pin connected to the user button on your board as input with an internal pull-up.**
+**The user button is connected to the Port 1, Pin 2.**
 ```C
 /* define button outside the main function, as we will use it later */
-gpio_t button = GPIO_PIN(PORT_D, 1);
+gpio_t button = GPIO_PIN(1, 2);
 
 /* initialize button inside the main function */
 gpio_init_int(button, GPIO_IN_PU, GPIO_BOTH, button_callback, NULL);

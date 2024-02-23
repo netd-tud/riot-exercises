@@ -5,7 +5,7 @@ unified interaction with a wide range of sensors and actuators through a set of
 defined access functions and a common data structure.
 
 Each device driver implementing this interface has to expose a set of predefined
-functions and it has to register itself to the central SAUL registry. From here
+functions, and it has to register itself to the central SAUL registry. From here
 devices can be found, listed, and accessed.
 
 Each device exposes its name and type. This information can be used for
@@ -19,10 +19,10 @@ To learn more about SAUL and the registry, check the online documentation
 ## Task 1
 
 Test the application and verify that when the sensed temperature surpasses the
-threshold of 26 °C the LED color switches to red.
+threshold of 24 °C the red LED turns on.
 
-**Hint**: Touch the temperature sensor on the side of your board
-to change the measured temperature (it is labeled HDC1000).
+**Hint**: Touch the temperature sensor on your board
+to change the measured temperature (it is the small gray box right of the RGB LED).
 
 **1. Build and flash the application. Open a serial port communication.**
 ```sh
@@ -31,11 +31,11 @@ $ make all flash term
 
 ## Task 2
 
-Modify the application to toggle the LEDs when temperature surpasses 27 °C.
+Modify the application to light the red LED whenever the temperature surpasses 25 °C.
 
 **1. Modify the threshold value.**
 
-**2. Build and flash the application again**
+**2. Build and flash the application again.**
 
 ## Phydat
 
@@ -103,13 +103,13 @@ phydat_dump(&acceleration, acc_dim);
 
 ## Task 4
 
-Detect when your board has been flipped 180 ° and turn the LED2 on.
+Detect when your board has been flipped 180 ° and turn the (blue) `LED1` on.
 
 **1. Check the current value of the acceleration on the Z axis.**
 **To access the value of the Z dimension, use `acceleration.val[2]`.**
 **When comparing account for measurement error (e.g. +- 100 mG)**
 
-**2. If the value surpasses than the threshold, turn the LED on (`LED2_ON`).**
-**Don't forget the turn the LED off (`LED2_OFF`) when the value does not surpass the threshold.**
+**2. If the value surpasses than the threshold, turn the LED on (`LED1_ON`).**
+**Don't forget the turn the LED off (`LED1_OFF`) when the value does not surpass the threshold.**
 
 **3. Build and flash the application. Open a serial port communication.**

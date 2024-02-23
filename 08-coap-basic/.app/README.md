@@ -6,7 +6,7 @@ humidity.
 **Note**: For both tasks set a border router and make sure that everyone is
 getting a global IP address.
 
-In addition to the border router, flash two `pba-d-01-kw2x` nodes, one with task
+In addition to the border router, flash two `feather-nrf52840-sense` nodes, one with task
 4 application and one with task 5. You can select which application you are
 building in the Makefile.
 

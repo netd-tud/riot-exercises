@@ -10,6 +10,7 @@
 
 #include "board.h"
 #include "ztimer.h"
+#include "periph/gpio.h"
 
 /* [TASK 1: define led0 here] */
 

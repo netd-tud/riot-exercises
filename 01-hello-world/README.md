@@ -30,6 +30,8 @@ $ make term
 ```sh
 main(): This is RIOT! (Version: 2024.01)
 Hello World!
+You are running RIOT on a(n) feather-nrf52840-sense board.
+This board features a(n) nrf52 MCU.
 ```
 
 **7. To exit the serial terminal program, press Ctrl + C.**

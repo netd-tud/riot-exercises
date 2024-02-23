@@ -32,24 +32,23 @@ $ make all flash term
 
 **The response should be similar to:**
 ```
-2022-03-30 13:51:14,836 # ifconfig
-2022-03-30 13:51:14,840 # Iface  6  HWaddr: 3E:66  Channel: 26  NID: 0x23 
-2022-03-30 13:51:14,844 #           Long HWaddr: 5F:0F:7B:9D:AE:49:3E:E6 
-2022-03-30 13:51:14,848 #            TX-Power: 0dBm  State: IDLE 
-2022-03-30 13:51:14,851 #           AUTOACK  ACK_REQ  AUTOCCA  
-2022-03-30 13:51:14,856 #           L2-PDU:102  MTU:1280  HL:64  6LO  IPHC  
-2022-03-30 13:51:14,859 #           Source address length: 8
-2022-03-30 13:51:14,862 #           Link type: wireless
-2022-03-30 13:51:14,867 #           inet6 addr: fe80::5d0f:7b9d:ae49:3ee6  scope: link  VAL
-2022-03-30 13:51:14,874 #           inet6 addr: 2001:db8::5d0f:7b9d:ae49:3ee6  scope: global  VAL
-2022-03-30 13:51:14,876 #           inet6 group: ff02::1
-2022-03-30 13:51:14,877 #   
+ifconfig
+Iface  7  HWaddr: 20:89  Channel: 26  NID: 0x23  PHY: O-QPSK 
+          Long HWaddr: EE:DF:B5:5D:8C:38:20:89 
+           State: IDLE 
+          ACK_REQ  L2-PDU:102  MTU:1280  HL:64  6LO  
+          IPHC  
+          Source address length: 8
+          Link type: wireless
+          inet6 addr: fe80::ecdf:b55d:8c38:2089  scope: link  VAL
+          inet6 addr: 2001:db8::5d0f:7b9d:ae49:3ee6  scope: global  VAL
+          inet6 group: ff02::1
 ```
 
 **You should see one wireless interface.**
 **Among other things, it has a MAC address (Long HWaddr), a maximum transmission unit (MTU) and one or more IPv6 addresses.**
-**They are denoted `inet6 addr`. You may not see the one with `scope:global`.**
-**In this case, one of the node's IPv6 addresses is `2001:db8::5d0f:7b9d:ae49:3ee6`.**
+**They are denoted `inet6 addr`.**
+**In this example, one of the node's IPv6 addresses is `2001:db8::5d0f:7b9d:ae49:3ee6`.**
 
 **3. Make a coap GET request to your own node. Use your IP address from the previous step.**
 **You can check how to use the `coap` shell command by typing:**
@@ -64,9 +63,9 @@ $ make all flash term
 
 **You should get a response with `code 2.05` and the paths of the resources.**
 ```
-2022-03-30 19:44:17,534 # gcoap_cli: sending msg ID 37913, 23 bytes
-2022-03-30 19:44:17,539 # gcoap: response Success, code 2.05, 13 bytes
-2022-03-30 19:44:17,540 # </riot/board>
+gcoap_cli: sending msg ID 37913, 23 bytes
+gcoap: response Success, code 2.05, 13 bytes
+</riot/board>
 ```
 
 **4. Try to get the board name from the `/riot/board` resource, sending a GET request.**
@@ -86,7 +85,6 @@ is received, the payload should be used to set the new status of the LED.
 static const gpio_t leds[] = {
     LED0_PIN,
     LED1_PIN,
-    LED2_PIN,
 };
 ```
 **2. Initialize the LED GPIOs inside the `server_init` function.**
@@ -94,7 +92,7 @@ static const gpio_t leds[] = {
 /* initialize LEDs and turn them off */
 for (unsigned i = 0; i < ARRAY_SIZE(leds); i++) {
     gpio_init(leds[i], GPIO_OUT);
-    gpio_set(leds[i]);
+    gpio_clear(leds[i]);
 }
 ```
 
@@ -164,9 +162,9 @@ case COAP_PUT: /* on PUT, we set the status of the LED based on the payload */
     }
 
     if (led_status) {
-        gpio_clear(leds[led_number]);
-    } else {
         gpio_set(leds[led_number]);
+    } else {
+        gpio_clear(leds[led_number]);
     }
     return gcoap_response(pdu, buf, len, COAP_CODE_CHANGED);
 
@@ -184,8 +182,8 @@ case COAP_GET: /* on GET, we return the status of the LED in plain text */
     /* finish the options indicating that we will include a payload */
     resp_len = coap_opt_finish(pdu, COAP_OPT_FINISH_PAYLOAD);
 
-    /* get the current status of the LED, which is the inverted value of the GPIO */
-    led_status = !gpio_read(leds[led_number]);
+    /* get the current status of the LED */
+    led_status = gpio_read(leds[led_number]);
 
     /* based on the status, write the value of the payload to send */
     if (led_status) {

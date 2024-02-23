@@ -40,17 +40,27 @@ When opening the RIOT Kit, you will find the following content:
 
 ## Software Setup
 
-- Connect to the locally provided WiFi network:
+- With your own computer, connect to the locally provided WiFi network:
   - SSID: `hack_n_ack`
   - Password: `ThefriendlyOSfortheIoT`
-- Access a cloud9 IDE on your Raspberry Pi from your browser
-  - URL: `https://riot-raspi-x.local:8080` (x ∈ {1..N})
+
+- Open `https://riot-raspi-ffffff.local:8080` in your browser, replacing `ffffff` with the six-digit identifier on the back of your Raspberry Pi
+  - Your browser might warn you about the self-signed certificate on the Raspberry Pi.
+    If so, click on "Advanced" and then on "Accept the Risk and Continue" (Firefox) or "Proceed to riot-raspi-ffffff.local (unsafe)" (Chrome).
+
+    <img src="tls-warning-firefox.png" width="30%">
+    <img src="tls-warning-chrome.png" width="30%">
+
+
+- When asked, provide the following credentials:
   - User: `pi`
   - Password: `riottutorial`
 
-<img src="cloud9.png" width="50%">
+- Cloud9 IDE should show up in the browser
 
-The tutorial files should already be preloaded.
+  <img src="cloud9.png" width="50%">
+
+The tutorial files are already preloaded.
 Cloud9 IDE lets you browse through the files using the directory tree on the left,
 write code and preview Markdown (such as this document) on the right,
 and access the console of the Raspberry Pi on the lower right.

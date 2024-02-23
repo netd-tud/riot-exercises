@@ -12,7 +12,7 @@ Pretty cool, right?
 But before getting started with coding and real hardware,
 let's understand what is inside the RIOT Kit in front of you.
 
-<img src="RIOT-Kit-closed.jpg" width="25%">
+<img src="RIOT-Kit-closed.jpg" alt="Photo of closed RIOT Kit" width="25%">
 
 ## RIOT Kit Content
 
@@ -29,14 +29,14 @@ When opening the RIOT Kit, you will find the following content:
 6. **Jumper Cables** (12x) to connect external devices such as LEDs or buttons to the Feather Sense
 7. **Breadboard** to build semi-permanent prototypes of electronic circuits
 
-<img src="RIOT-Kit.png" width="50%">
+<img src="RIOT-Kit.png" alt="Photo of open RIOT Kit with numbered content" width="50%">
 
 ## Hardware Setup
 
 - Power the Raspberry Pi (1) using the power adapter (2).
 - Connect the Feather Sense (3) to the Raspberry Pi (1) using the USB cable (4).
 
-<img src="connected.jpg" width="50%">
+<img src="connected.jpg" alt="Photo of the Raspberry Pi (right) connected to the Feather Sense (left)" width="50%">
 
 ## Software Setup
 
@@ -48,8 +48,8 @@ When opening the RIOT Kit, you will find the following content:
   - Your browser might warn you about the self-signed certificate on the Raspberry Pi.
     If so, click on "Advanced" and then on "Accept the Risk and Continue" (Firefox) or "Proceed to riot-raspi-ffffff.local (unsafe)" (Chrome).
 
-    <img src="tls-warning-firefox.png" width="30%">
-    <img src="tls-warning-chrome.png" width="30%">
+    <img src="tls-warning-firefox.png" alt="Screenshot of Firefox certificate warning" width="30%">
+    <img src="tls-warning-chrome.png" alt="Screenshot of Chrome certificate warning" width="30%">
 
 
 - When asked, provide the following credentials:
@@ -58,7 +58,7 @@ When opening the RIOT Kit, you will find the following content:
 
 - Cloud9 IDE should show up in the browser
 
-  <img src="cloud9.png" width="50%">
+  <img src="cloud9.png" alt="Screenshot of cloud9 IDE" width="50%">
 
 The tutorial files are already preloaded.
 Cloud9 IDE lets you browse through the files using the directory tree on the left,

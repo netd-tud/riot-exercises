@@ -28,7 +28,7 @@ $ make term
 **6. Reset your board by pressing the 'Reset' button. You should see the "Hello World!" message.**
 
 ```sh
-main(): This is RIOT! (Version: 2022.04-devel)
+main(): This is RIOT! (Version: 2024.01)
 Hello World!
 ```
 

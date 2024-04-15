@@ -73,6 +73,6 @@ Alternatively, you may add the credentials of your home WiFi to the Raspberry Pi
 as explained here: https://weworkweplay.com/play/automatically-connect-a-raspberry-pi-to-a-wifi-network/
 
 If you prefer to develop without the Raspberry Pi on your own Linux machine,
-you can find the [general instructions to set up you RIOT development environment](https://doc.riot-os.org/getting-started.html)
+you can find the [general instructions to set up your RIOT development environment](https://doc.riot-os.org/getting-started.html)
 and the [specific ones for the Feather Sense](https://doc.riot-os.org/group__boards__feather-nrf52840-sense.html)
 in the RIOT documentation.

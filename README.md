@@ -1,4 +1,4 @@
-# Wireless Sensor Networks - Exercises
+# RIOT in the Internet of Things - Exercises
 
 ## Overview
 
@@ -6,7 +6,7 @@ Collection of practical exercises, assignments, and tasks to become familiar
 with IoT technologies using Linux and RIOT-OS.
 
 This is a version of https://github.com/inetrg/exercises
-adapted for the course "Wireless Sensor Networks" at TU Dresden.
+adapted for the hardware kits used at TU Dresden.
 
 ## Getting started
 

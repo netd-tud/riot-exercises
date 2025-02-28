@@ -109,7 +109,7 @@ static size_t _send(uint8_t *buf, size_t len, char *addr_str, char *port_str)
         return 0;
     }
 
-    bytes_sent = gcoap_req_send(buf, len, &remote, _resp_handler, NULL, GCOAP_SOCKET_TYPE_UDP);
+    bytes_sent = gcoap_req_send(buf, len, &remote, NULL, _resp_handler, NULL, GCOAP_SOCKET_TYPE_UDP);
     if (bytes_sent > 0) {
         req_count++;
     }

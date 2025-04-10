@@ -1,0 +1,19 @@
+[package]
+name = "timers-example"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["staticlib"]
+
+[profile.release]
+# Setting the panic mode has little effect on the built code (as Rust on RIOT
+# supports no unwinding), but setting it allows builds on native without using
+# the nightly-only lang_items feature.
+panic = "abort"
+
+[dependencies]
+riot-wrappers = { version = "0.9.1", features = [ "set_panic_handler", "panic_handler_format" ] }
+
+rust_riotmodules = { path = "../RIOT/sys/rust_riotmodules/" }
+switch-hal = "0.4.0"

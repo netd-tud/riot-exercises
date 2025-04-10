@@ -44,9 +44,6 @@ USEMODULE += ps
 # development process:
 DEVELHELP ?= 1
 
-# Some workarounds are needed in order to get the tutorial running on
-# some computers.
--include ../lab_workarounds.mk
 
 # We need a larger buffer in order to send some commands without truncation.
 CFLAGS += -DSTDIO_RX_BUFSIZE=128

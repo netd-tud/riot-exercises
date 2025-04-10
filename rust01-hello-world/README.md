@@ -38,7 +38,7 @@ $ make term
 **6. Reset your board by pressing the 'Reset' button. You should see the "Hello Rust!" message.**
 
 ```sh
-main(): This is RIOT! (Version: 2024.01)
+main(): This is RIOT! (Version: 2025.01)
 Hello Rust!
 You are running RIOT on a(n) feather-nrf52840-sense board.
 ```

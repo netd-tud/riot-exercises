@@ -14,12 +14,6 @@ USEMODULE += ztimer_sec
 USEMODULE += nimble_svc_gap
 USEMODULE += nimble_svc_gatt
 
-# It depends on RIOT version, if the following CFLAG is needed
-# Use the high frequency crystal oscillator
-# This is needed for the BLE stack to work properly
-# Specifically on the feather-nrf52840-sense board
-CFLAGS += -DCLOCK_HFXO_ONBOOT=1
-
 # Comment this out to disable code in RIOT that does safety checking
 # which is not needed in a production environment but helps in the
 # development process:

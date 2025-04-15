@@ -17,15 +17,6 @@ USEMODULE += nimble_svc_gap
 USEMODULE += nimble_svc_gatt
 ```
 
-Some devices or RIOT versions may need a specific `CFLAG`. It is already in the [`Makefile`](./Makefile) of this example. You can comment it out to see if the BLE communication is impacted or not.
-```Makefile
-# It depends on RIOT version, if the following CFLAG is needed
-# Use the high frequency crystal oscillator
-# This is needed for the BLE stack to work properly
-# Specifically on the feather-nrf52840-sense board
-CFLAGS += -DCLOCK_HFXO_ONBOOT=1
-```
-
 To change to this directory from a different exercise, use the following command in the terminal.
 
 ```sh

@@ -1,0 +1,38 @@
+name: Build all applications
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        app:
+          - 01-hello-world
+          - 02-timers
+          - 03-shell
+          - 04-saul
+          - 05-gpios
+          - 06-threads
+          - 07-events
+          - 08-coap-basic
+          - 09-netapi
+          - 10-sock
+          - 11-ble-peripheral
+          - 12-ble-central
+          - rust01-hello-world
+          - rust02-timers
+          - rust03-shell
+          - rust04-saul
+          - rust05-gpio
+          - rust06-threads
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Build ${{ matrix.app }}
+        working-directory: ${{ matrix.app }}
+        run: BUILD_IN_DOCKER=1 make all

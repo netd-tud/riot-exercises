@@ -4,27 +4,6 @@ on:
   pull_request:
     branches: [master]
 
-env:
-  APPS: |
-    01-hello-world
-    02-timers
-    03-shell
-    04-saul
-    05-gpios
-    06-threads
-    07-events
-    08-coap-basic
-    09-netapi
-    10-sock
-    11-ble-peripheral
-    12-ble-central
-    rust01-hello-world
-    rust02-timers
-    rust03-shell
-    rust04-saul
-    rust05-gpio
-    rust06-threads
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -36,12 +15,18 @@ jobs:
       - name: Build all applications
         run: |
           echo "## 🔧 Builds Test" >> "$GITHUB_STEP_SUMMARY"
-          for app in $APPS; do
+          for app in $(find ${{ github.workspace }} -maxdepth 1 -type d -not -name RIOT | sort); do
+            if [ ! -f "$app/Makefile" ]; then
+                echo "Makefile in $app does not exist"
+                continue
+            fi
+
             echo "Building $app"
+            app_name=$(basename $app)
             if (cd "$app" && BUILD_IN_DOCKER=1 make all); then
-              echo "✅ $app" >> "$GITHUB_STEP_SUMMARY"
+              echo "✅ $app_name" >> "$GITHUB_STEP_SUMMARY"
             else
-              echo "❌ $app" >> "$GITHUB_STEP_SUMMARY"
+              echo "❌ $app_name" >> "$GITHUB_STEP_SUMMARY"
               exit 1
             fi
           done

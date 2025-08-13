@@ -37,12 +37,12 @@ use riot_wrappers::gpio::{GPIO, OutputMode};
 ```
 
 **2. Inside the `main` function define the led0 GPIO pin, and configure it as an output.**
-**In the `feather-nrf52840-sense` we are currently using, the LED0 is connected to the**
+**In the `adafruit-feather-nrf52840-sense` we are currently using, the LED0 is connected to the**
 **Port 1, Pin 9:**
 
 ```rust
 let led0 = match riot_wrappers::BOARD {
-    "feather-nrf52840-sense" => GPIO::from_port_and_pin(1, 9),
+    "adafruit-feather-nrf52840-sense" => GPIO::from_port_and_pin(1, 9),
     _  => panic!("No pinout known for this board"),
 };
 

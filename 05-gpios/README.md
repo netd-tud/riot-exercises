@@ -37,7 +37,7 @@ write particular registers that control the GPIO peripheral.
 ```
 
 **2. Outside the `main` function define the LED0 GPIO pin as an output.**
-**In the `feather-nrf52840-sense` we are currently using, the LED0 is connected to the**
+**In the `adafruit-feather-nrf52840-sense` we are currently using, the LED0 is connected to the**
 **Port 1, Pin 9:**
 ```C
 gpio_t led0 = GPIO_PIN(1, 9);

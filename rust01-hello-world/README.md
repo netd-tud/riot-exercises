@@ -40,7 +40,7 @@ $ make term
 ```sh
 main(): This is RIOT! (Version: 2025.01)
 Hello Rust!
-You are running RIOT on a(n) feather-nrf52840-sense board.
+You are running RIOT on a(n) adafruit-feather-nrf52840-sense board.
 ```
 
 **7. To exit the serial terminal program, press Ctrl + C.**

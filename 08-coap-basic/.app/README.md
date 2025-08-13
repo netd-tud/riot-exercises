@@ -9,13 +9,13 @@ This can be done by flashing the `examples/gnrc_border_router` with:
 ```
 UPLINK=cdc-ecm \
 PREFIX_CONF=auto_subnets \
-BOARD=feather-nrf52840-sense \
+BOARD=adafruit-feather-nrf52840-sense \
 PORT=/dev/ttyACM0 \
 make flash term
 ```
 You may use `DEBUG_ADAPTER_ID` if multiple boards are plugged in.
 
-In addition to the border router, flash two `feather-nrf52840-sense` nodes, one with task
+In addition to the border router, flash two `adafruit-feather-nrf52840-sense` nodes, one with task
 4 application and one with task 5. You can select which application you are
 building in the Makefile.
 

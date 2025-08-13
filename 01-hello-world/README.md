@@ -38,9 +38,9 @@ $ make term
 **6. Reset your board by pressing the 'Reset' button. You should see the "Hello World!" message.**
 
 ```sh
-main(): This is RIOT! (Version: 2025.01)
+main(): This is RIOT! (Version: 2025.07)
 Hello World!
-You are running RIOT on a(n) feather-nrf52840-sense board.
+You are running RIOT on a(n) adafruit-feather-nrf52840-sense board.
 This board features a(n) nrf52 MCU.
 ```
 

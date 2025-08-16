@@ -5,14 +5,13 @@ APPLICATION = coap-example
 BOARD ?= adafruit-feather-nrf52840-sense
 
 # SELECT A TASK
-TASK_4 = 1
-# TASK_5 = 1
+TASK ?= 4
 
-ifdef TASK_4
+ifeq (4,$(TASK))
   CFLAGS += -DTASK_4
 endif
 
-ifdef TASK_5
+ifeq (5,$(TASK))
   CFLAGS += -DTASK_5
   CFLAGS += -DCONFIG_CORD_LT=60
   USEMODULE += cord_ep_standalone

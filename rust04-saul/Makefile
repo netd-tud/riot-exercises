@@ -1,5 +1,11 @@
 APPLICATION = saul_example
 
+# The name of the crate (as per Cargo.toml package name, but with '-' replaced with '_')
+#
+# The presence of this triggers building Rust code contained in this
+# application in addition to any C code.
+APPLICATION_RUST_MODULE = saul_example
+
 # If no BOARD is found in the environment, use this default:
 BOARD ?= adafruit-feather-nrf52840-sense
 
@@ -21,11 +27,5 @@ USEMODULE += saul_default
 # which is not needed in a production environment but helps in the
 # development process:
 DEVELHELP ?= 1
-
-
-# Tell the build system to use the Rust crate here
-FEATURES_REQUIRED += rust_target
-APPLICATION_RUST_MODULE = saul_example
-BASELIBS += $(APPLICATION_RUST_MODULE).module
 
 include $(RIOTBASE)/Makefile.include

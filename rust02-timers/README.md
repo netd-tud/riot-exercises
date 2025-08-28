@@ -36,7 +36,18 @@ $ make all flash term
 **2. Reset the board. You should see "This is a timers example", and then a "Timeout!" string after 4 seconds.**
 
 ## Task 2
-Modify the application so that the board has the LED on for only 250 ms, and runs only 10 iterations.
+Modify the `blink` function so that the board has the LED on for only 250 ms, and runs only 10 iterations.
+
+```rust
+fn blink<const I: u8>(led: &mut LED<I>) {
+```
+The `<I>` on the `led: &mut LED<I>` parameter is a generic argument:
+The LED subsystem of RIOT is optimized for low latency to assist in debugging.
+By using a generic argument instead of a struct field (e.g, `struct LED { number: u8, ... }`),
+it is ensured that the LED number is already known at build time.
+
+The generic parameter `<I>` is propagated to the function signature `blink<const I: u8>` so that `blink` can be called
+not only for a specific LED, e.g. `LED<0>`, but for all LEDs.
 
 **1. Adapt the loop to be true for 10 iterations:**
 ```rust
@@ -62,25 +73,16 @@ Add a new timer to turn LED1 on after 1 second.
 let mut led1 = riot_wrappers::led::LED::<1>::new_checked().expect("Our board has an LED1");
 ```
 
-The `::<1>` is a generic argument:
-The LED subsystem of RIOT is optimized for low latency to assist in debugging,
-and the generic argument ensures that the number is known at build time.
+We substitute here the generic parameter on `LED<const u8: I>` with actual LED number `<1>`.
 
-**2. Around the loop, call the [`set_during`](https://rustdoc.etonomy.org/riot_wrappers/ztimer/struct.Clock.html#method.set_during) function, and in the callback, turn on LED1.**
+**2. Call the [`set_during`](https://rustdoc.etonomy.org/riot_wrappers/ztimer/struct.Clock.html#method.set_during) function, and in the callback, turn on LED1.**
 
 ```rust
 Clock::msec().set_during(
     || led1.on().unwrap(),
-    riot_wrappers::ztimer::Ticks::from_duration(
-        Duration::from_secs(1)
-        ).expect("1 second is expressible in millisecond ticks"),
-    || {
-```
-
-(existing `for` loop remains in here)
-
-```rust
-});
+    Duration::from_secs(1).try_into().unwrap(),
+    || blink(&mut led0), // thread function
+);
 ```
 
 The `||` indicates a [closure](https://doc.rust-lang.org/book/ch13-01-closures.html):
@@ -92,6 +94,9 @@ Note that the LED 1 was sent from the main thread to the interrupt handler defin
 Code that should execute inside an interrupt handler is limited
 (for example, no blocking operations should occur).
 The requirement that data sent to an interrupt handler is `Send` prevents many mistakes there.
+
+The second closure describes the main thread logic that should run while the interrupt has not been triggered yet.
+Here, we insert the old `blink` function.
 
 **3. Recompile and build the application. Press the reset button.**
 ```sh

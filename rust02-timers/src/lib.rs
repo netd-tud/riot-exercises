@@ -3,6 +3,7 @@
 #![no_std]
 
 use core::time::Duration;
+use riot_wrappers::led::LED;
 use riot_wrappers::println;
 use riot_wrappers::riot_main;
 use riot_wrappers::ztimer::Clock;

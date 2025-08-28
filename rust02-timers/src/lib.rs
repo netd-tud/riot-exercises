@@ -2,10 +2,10 @@
 // SPDX-License-Identifier: Apache-2.0 OR MIT
 #![no_std]
 
-use riot_wrappers::riot_main;
-use riot_wrappers::println;
-use riot_wrappers::ztimer::Clock;
 use core::time::Duration;
+use riot_wrappers::println;
+use riot_wrappers::riot_main;
+use riot_wrappers::ztimer::Clock;
 
 // We are using the LED through a generic "on"/"off" interface.
 use switch_hal::OutputSwitch;

@@ -2,11 +2,11 @@
 // SPDX-License-Identifier: Apache-2.0 OR MIT
 #![no_std]
 
-use riot_wrappers::riot_main;
-use riot_wrappers::println;
-use riot_wrappers::ztimer::Clock;
 use core::time::Duration;
-use riot_wrappers::saul::{RegistryEntry, Class, SensorClass, Unit};
+use riot_wrappers::println;
+use riot_wrappers::riot_main;
+use riot_wrappers::saul::{Class, RegistryEntry, SensorClass, Unit};
+use riot_wrappers::ztimer::Clock;
 
 extern crate rust_riotmodules;
 
@@ -22,16 +22,16 @@ fn main() {
     let mut led0 = riot_wrappers::led::LED::<0>::new_checked().expect("Our board has an LED0");
 
     let temp_sensor = RegistryEntry::all()
-        .filter(|e| matches!(e.type_(), Some(Class::Sensor(Some(SensorClass::Temp)))))
-        .next()
+        .find(|e| matches!(e.type_(), Some(Class::Sensor(Some(SensorClass::Temp)))))
         .expect("No temperature sensor present");
 
-    println!("Found temperature device: {}", temp_sensor.name().unwrap_or("(unnamed)"));
+    println!(
+        "Found temperature device: {}",
+        temp_sensor.name().unwrap_or("(unnamed)")
+    );
 
     loop {
-        let temperature = temp_sensor
-            .read()
-            .expect("Error reading temperature");
+        let temperature = temp_sensor.read().expect("Error reading temperature");
 
         println!("Read value: {:?}", temperature);
 

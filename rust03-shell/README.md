@@ -123,7 +123,7 @@ Modify the `toggle` command so it accepts as first argument `0` or `1`, and togg
 the specific LED (using `LED0_TOGGLE` or `LED1_TOGGLE`).
 
 **1. As the command now takes 1 argument, we need to adapt the initial check in the `toggle` function.**
-**Also, adapt the usage `printf` to indicate that an argument is required (`"usage: {} <led_number>"`).**
+**Also, adapt the usage `printf` to indicate that an argument is required (`"usage: {commandname} <led_number>"`).**
 
 ```rust
     let (Some(number), None) = (args.next(), args.next()) else {

@@ -22,8 +22,7 @@ fn main() {
     let mut led0 = riot_wrappers::led::LED::<0>::new_checked().expect("Our board has an LED0");
 
     let temp_sensor = RegistryEntry::all()
-        .filter(|e| matches!(e.type_(), Some(Class::Sensor(Some(SensorClass::Temp)))))
-        .next()
+        .find(|e| matches!(e.type_(), Some(Class::Sensor(Some(SensorClass::Temp)))))
         .expect("No temperature sensor present");
 
     println!(

@@ -15,7 +15,7 @@ extern crate rust_riotmodules;
 
 riot_main!(main);
 
-fn blink<const I: u8>(led: LED<I>) {
+fn blink<const I: u8>(led: &mut LED<I>) {
     for _ in 0..20 {
         // This blinks the LED in a 50% duty cycle once per second
 
@@ -45,7 +45,7 @@ fn main() {
 
     let mut led0 = riot_wrappers::led::LED::<0>::new_checked().expect("Our board has an LED0");
 
-    blink(led0);
+    blink(&mut led0);
 
     println!("Done!");
 }

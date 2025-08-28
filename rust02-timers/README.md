@@ -36,7 +36,7 @@ $ make all flash term
 **2. Reset the board. You should see "This is a timers example", and then a "Timeout!" string after 4 seconds.**
 
 ## Task 2
-Modify the application so that the board has the LED on for only 250 ms, and runs only 10 iterations.
+Modify the `blink` function so that the board has the LED on for only 250 ms, and runs only 10 iterations.
 
 **1. Adapt the loop to be true for 10 iterations:**
 ```rust
@@ -66,21 +66,14 @@ The `::<1>` is a generic argument:
 The LED subsystem of RIOT is optimized for low latency to assist in debugging,
 and the generic argument ensures that the number is known at build time.
 
-**2. Around the loop, call the [`set_during`](https://rustdoc.etonomy.org/riot_wrappers/ztimer/struct.Clock.html#method.set_during) function, and in the callback, turn on LED1.**
+**2. Call the [`set_during`](https://rustdoc.etonomy.org/riot_wrappers/ztimer/struct.Clock.html#method.set_during) function, and in the callback, turn on LED1.**
 
 ```rust
 Clock::msec().set_during(
     || led1.on().unwrap(),
-    riot_wrappers::ztimer::Ticks::from_duration(
-        Duration::from_secs(1)
-        ).expect("1 second is expressible in millisecond ticks"),
-    || {
-```
-
-(existing `for` loop remains in here)
-
-```rust
-});
+    Duration::from_secs(1).try_into().unwrap(),
+    || blink(&mut led0), // thread function
+);
 ```
 
 The `||` indicates a [closure](https://doc.rust-lang.org/book/ch13-01-closures.html):
@@ -92,6 +85,9 @@ Note that the LED 1 was sent from the main thread to the interrupt handler defin
 Code that should execute inside an interrupt handler is limited
 (for example, no blocking operations should occur).
 The requirement that data sent to an interrupt handler is `Send` prevents many mistakes there.
+
+The second closure describes the main thread logic that should run in the mean time, while the interrupt isn't triggered.
+Here, we insert the old `blink` function.
 
 **3. Recompile and build the application. Press the reset button.**
 ```sh

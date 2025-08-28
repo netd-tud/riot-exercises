@@ -59,7 +59,7 @@ Add a new timer to turn LED1 on after 1 second.
 
 **1. Define LED 1:**
 ```rust
-let mut led1 = riot_wrappers::led::LED::<1>::new();
+let mut led1 = riot_wrappers::led::LED::<1>::new_checked().expect("Our board has an LED1");
 ```
 
 The `::<1>` is a generic argument:

@@ -1,7 +1,7 @@
 # GPIOs
 
 General Purpose Input/Outputs (GPIOs) are a peripheral that allows
-microcontrollers to interact with the physical world. They are 
+microcontrollers to interact with the physical world. They are
 commonly known as pins. As the name suggests, they can be either configured as
 digital inputs or digital outputs. That is, they can read a digital value from
 the outside, or present a digital value to the outside (which translates in
@@ -137,7 +137,7 @@ extern "C" fn button_callback(arg: *mut riot_sys::libc::c_void) {
 
     // On a regular input pin we could run `.is_low()`, but the `riot_wrappers::gpio::OutputGPIO`
     // type would reconfigure the pin in its constructor, so we even read it manually.
-    if unsafe { riot_sys::gpio_read(pins.button.to_c()) } == 0 {
+    if unsafe { !riot_sys::gpio_read(pins.button.to_c()) } {
         pins.led1.set_high();
     }
     else {

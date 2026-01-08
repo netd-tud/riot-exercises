@@ -75,17 +75,14 @@ Read the received packet data.
 gnrc_pktsnip_t *pkt = msg.content.ptr;
     
 if (pkt->next) {
-	if (pkt->next->next) {
-		//Calculate DISTANCE from rssi and txpower | here: (n=3.5 and pathloss=40.0)
-		
-		gnrc_netif_hdr_t *hdr = pkt->next->next->data;
-		int rssi_raw = (int)hdr->rssi;
+	//Calculate DISTANCE from rssi and txpower
+	
+	gnrc_netif_hdr_t *hdr = pkt->next->data;
+	int rssi_raw = (int)hdr->rssi;
 
-		/* Calculate the DISTANCE */
-		
-		printf("Distance: %dcm\n", distance);
-
-	}
+	/* Calculate the DISTANCE */
+	
+	printf("Distance: %dcm\n", distance);
 
 }
 ```
@@ -102,6 +99,8 @@ d=10^((Tx−RSSI)/(10⋅n))
 * **(Tx)** = transmit power at 1 meter (in dBm)
 * **(RSSI)** = received signal strength (in dBm)
 * **(n)** = path-loss exponent (environment factor)
+
+Note: Tx typically ranges from -60dBm to +8dBm for the feather sense nrf52480.
 
 The idea: radio signals lose strength logarithmically with distance.
 The parameter **(n)** models the environment:

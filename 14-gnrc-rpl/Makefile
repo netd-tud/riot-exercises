@@ -37,4 +37,3 @@ ifeq ($(ROOT),1)
 else
   CFLAGS += -DROOT=0
 endif
-

@@ -96,4 +96,3 @@ keys/
 
 # Rust generated files
 target/
-Cargo.lock

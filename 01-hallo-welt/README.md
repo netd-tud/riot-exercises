@@ -94,8 +94,6 @@ Die **serielle Schnittstelle** ist die Kabelverbindung, über die dein Computer 
 make all flash term
 ```
 
----
-
 ## Aufgabe 3 - Der Programmcode
 
 Den Programmcode deiner Anwendung findest du im Ordner _01-hallo-welt_ in der Datei `main.c`.

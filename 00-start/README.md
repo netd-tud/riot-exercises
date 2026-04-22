@@ -2,7 +2,7 @@
 
 Willkommen bei RIOT, dem freundlichen Betriebssystem für das Internet der Dinge!
 
-<img src="riot-logo-large.png" alt="RIOT Logo" width="50%">
+![](riot-logo-large.png)
 
 RIOT ist ein freies, offenes Betriebssystem.
 Aber was ist ein **Betriebssystem** eigentlich?
@@ -15,6 +15,7 @@ Sie werden zum Beispiel im Smart-Home eingesetzt, damit du deine Heizung mit dem
 Diese Geräte enthalten oft einen **Mikrocontroller**.
 
 > **Was ist ein Mikrocontroller?**
+>
 > Ein Mikrocontroller ist ein winziger Computer auf einem Chip.
 > Er kann einfache Aufgaben übernehmen, wie z. B. Sensoren auslesen oder LEDs ein- und ausschalten.
 
@@ -23,8 +24,6 @@ Das Ziel von RIOT ist es, ein **Internet der Dinge** zu schaffen, das vernetzt, 
 Ziemlich cool, oder?
 
 Bevor wir jedoch mit dem Programmieren und der echten Hardware beginnen, schauen wir uns an, was sich im RIOT Kit vor dir befindet.
-
-<img src="RIOT-Kit-closed.jpg" alt="Foto des geschlossenen RIOT Kits" width="25%">
 
 ## RIOT Kit Inhalt
 
@@ -39,12 +38,11 @@ Wenn du das RIOT Kit öffnest, findest du folgende Teile:
    Auf diesem Board werden wir RIOT installieren und ausführen!
 4. **USB-Kabel**, um den Feather Sense mit dem Raspberry Pi zu verbinden.
 
-<img src="RIOT-Kit.png" alt="Foto des geöffneten RIOT Kits mit nummeriertem Inhalt" width="50%">
+![](RIOT-Kit.png)
 
 ## Hardware Setup
 
 - Versorge den Raspberry Pi (1) mit Strom über den Power Adapter (2).
 - Verbinde den Feather Sense (3) mit dem Raspberry Pi (1) über das USB-Kabel (4).
 
-<img src="connected.jpg" alt="Foto des Raspberry Pi (rechts), verbunden mit dem Feather Sense (links)" width="50%">
-
+![](connected.jpg)

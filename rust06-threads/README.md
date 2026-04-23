@@ -50,7 +50,7 @@ RIOT scheduler executes a thread until one of the following conditions occurs:
   pending events.
 
 For more information visit the
-[thread documentation page](https://doc.riot-os.org/group__core__thread.html).
+[thread documentation page](https://api.riot-os.org/group__core__thread.html).
 
 To change to this directory from a different exercise, use the following command in the terminal.
 

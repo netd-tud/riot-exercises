@@ -23,7 +23,7 @@ executing events on timeout, executing periodic tasks, etc. It also provides
 predefined event queues.
 
 To learn more about this mechanism, visit the
-[Event Queue documentation page](https://doc.riot-os.org/group__sys__event.html).
+[Event Queue documentation page](https://api.riot-os.org/group__sys__event.html).
 
 For this experience, we focus only on the basic Event Queue support.
 

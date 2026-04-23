@@ -6,7 +6,7 @@ any layer of the OSI model. The protocol implementations communicate via an API 
 ![Architecture of the GNRC network stack](./riot-gnrc.svg)
 
 *NETAPI* consists of 5 IPC API operations, 2 packet operations and 3 option operations. It utilizes
-the [msg API](https://doc.riot-os.org/group__core__msg.html) of the RIOT core:
+the [msg API](https://api.riot-os.org/group__core__msg.html) of the RIOT core:
 
 - `GNRC_NETAPI_MSG_TYPE_RCV`: Asynchronously pass packets up the network stack
   (receive from upper protocol).
@@ -19,7 +19,7 @@ the [msg API](https://doc.riot-os.org/group__core__msg.html) of the RIOT core:
 
 
 Other protocols can register to packet operations using the
-[network protocol registry `gnrc_netreg`](https://doc.riot-os.org/group__net__gnrc__netreg.html).
+[network protocol registry `gnrc_netreg`](https://api.riot-os.org/group__net__gnrc__netreg.html).
 
 To use GNRC we need to include at least one GNRC submodule, IPv6 in our case:
 

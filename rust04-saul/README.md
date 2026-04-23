@@ -13,8 +13,8 @@ automated searching and matching of devices (e.g. connect light sensor
 automatically with the color of an RGB LED...).
 
 To learn more about SAUL and the registry, check the online documentation
-[here](https://doc.riot-os.org/group__drivers__saul.html) and
-[here](https://doc.riot-os.org/group__sys__saul__reg.html).
+[here](https://api.riot-os.org/group__drivers__saul.html) and
+[here](https://api.riot-os.org/group__sys__saul__reg.html).
 
 To change to this directory from a different exercise, use the following command in the terminal.
 
@@ -76,7 +76,7 @@ the particular case of our sensor, the value is expressed with a factor of
 `value()[0]` will be `2550`.
 
 For more information about phydat, like units and provided functions, check the
-[online documentation](https://doc.riot-os.org/group__sys__phydat.html).
+[online documentation](https://api.riot-os.org/group__sys__phydat.html).
 
 ## Task 3
 

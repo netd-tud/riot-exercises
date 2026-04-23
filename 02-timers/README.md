@@ -19,7 +19,7 @@ USEMODULE += ztimer_msec # millisecond precision
 USEMODULE += ztimer_sec  # second precision
 ```
 
-To learn more about the `ztimer` module, visit the [documentation page](https://doc.riot-os.org/group__sys__ztimer.html).
+To learn more about the `ztimer` module, visit the [documentation page](https://api.riot-os.org/group__sys__ztimer.html).
 
 To change to this directory from a different exercise, use the following command in the terminal.
 

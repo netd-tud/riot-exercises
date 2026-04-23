@@ -14,7 +14,7 @@ It also can perform CoAP requests to other nodes. The application exposes a
 
 We will be using the gcoap module from RIOT. For more detailed information and
 advanced usages, check
-[the documentation](https://doc.riot-os.org/group__net__gcoap.html).
+[the documentation](https://api.riot-os.org/group__net__gcoap.html).
 
 To change to this directory from a different exercise, use the following command in the terminal.
 
@@ -39,11 +39,11 @@ $ make all flash term
 **The response should be similar to:**
 ```
 ifconfig
-Iface  7  HWaddr: 20:89  Channel: 26  NID: 0x23  PHY: O-QPSK 
-          Long HWaddr: EE:DF:B5:5D:8C:38:20:89 
-           State: IDLE 
-          ACK_REQ  L2-PDU:102  MTU:1280  HL:64  6LO  
-          IPHC  
+Iface  7  HWaddr: 20:89  Channel: 26  NID: 0x23  PHY: O-QPSK
+          Long HWaddr: EE:DF:B5:5D:8C:38:20:89
+           State: IDLE
+          ACK_REQ  L2-PDU:102  MTU:1280  HL:64  6LO
+          IPHC
           Source address length: 8
           Link type: wireless
           inet6 addr: fe80::ecdf:b55d:8c38:2089  scope: link  VAL
@@ -112,7 +112,7 @@ for (unsigned i = 0; i < ARRAY_SIZE(leds); i++) {
 **4. Implement the resource handler function.**
 
 **Start by defining the function with the correct**
-**[signature](https://doc.riot-os.org/group__net__gcoap.html#ga8f62887693fa63a7595565e44156806d):**
+**[signature](https://api.riot-os.org/group__net__gcoap.html#ga8f62887693fa63a7595565e44156806d):**
 ```C
 static ssize_t _led_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, coap_request_ctx_t *ctx)
 {
@@ -228,7 +228,7 @@ on.
 express web linking for constrained nodes. It is usually utilized for resource
 discovery (e.g. via the `/.well-known/core` resource or a resource directory).
 
-Let's see an example of a link format response (the line breaks are included 
+Let's see an example of a link format response (the line breaks are included
 for clarity):
 
 ```

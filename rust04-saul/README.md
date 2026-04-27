@@ -82,10 +82,10 @@ For more information about phydat, like units and provided functions, check the
 
 Modify the application to also read values from the onboard accelerometer.
 
-**1. Find the onboard accelerometer, by searching for a device of type `SAUL_SENSE_ACCEL` using `saul_reg_find_type`.**
+**1. Find the onboard accelerometer, by searching for the first device of type `SAUL_SENSE_ACCEL` using `saul_reg_find_type`.**
 ```rust
 let accel_sensor = RegistryEntry::all()
-    .filter(|e| matches!(e.type_(), Some(Class::Sensor(Some(SensorClass::Accel)))))
+    .find(|e| matches!(e.type_(), Some(Class::Sensor(Some(SensorClass::Accel)))))
     // ...
 ```
 

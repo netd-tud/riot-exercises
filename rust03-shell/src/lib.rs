@@ -12,14 +12,12 @@ riot_main!(main);
 
 fn main() {
     use riot_wrappers::shell::CommandList;
-    riot_wrappers::shell::new()
-        .run_forever();
+    riot_wrappers::shell::new().run_forever();
 }
-
 
 riot_wrappers::static_command!(static_echo, "echo", "Echo message", echo);
 
-pub fn echo<'a>(w: &mut impl Write, args: impl IntoIterator<Item=&'a str>) {
+pub fn echo<'a>(w: &mut impl Write, args: impl IntoIterator<Item = &'a str>) {
     let mut args = args.into_iter();
     let commandname = args.next().expect("argv is always present");
 

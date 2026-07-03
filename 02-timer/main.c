@@ -12,11 +12,10 @@
 #include "board.h"
 
 /* Gibt true zurück wenn die Zeit abgelaufen ist, ansonsten false */
-bool timer_laeuft(ztimer_now_t start, uint32_t dauer)
+bool timer_done(ztimer_now_t start, uint32_t duration)
 {
-    uint32_t jetzt = ztimer_now(ZTIMER_SEC);
-    uint32_t abgelaufene_zeit = jetzt - start;
-    return abgelaufene_zeit < dauer;
+    uint32_t now = ztimer_now(ZTIMER_SEC);
+    return (now - start) < duration;
 }
 
 /* [AUFGABE 3] Füge hier die Call-back Funktion ein. */
@@ -28,20 +27,20 @@ int main(void)
 
     /* [AUFGABE 3] Füge hier den Timer ein. */
 
-    
+
     /* Lese den aktuellen Timer Zählstand */
     ztimer_now_t start = ztimer_now(ZTIMER_SEC);
 
     /* Setze die Dauer auf 10 Sekunden */
-    uint32_t dauer = 10;
+    uint32_t duration = 10;
 
     /* Blinke die LED in einer Schleife.*/
-    while (timer_laeuft(start, dauer)) {
+    while (timer_done(start, duration)) {
         /* Schalte die LED */
         LED0_TOGGLE;
         /* Warte 1 Sekunde */
-        uint32_t warte_zeit = 1;
-        ztimer_sleep(ZTIMER_SEC, warte_zeit);
+        uint32_t wait = 1;
+        ztimer_sleep(ZTIMER_SEC, wait);
     }
 
     printf("Fertig!\n");

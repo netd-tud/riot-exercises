@@ -28,15 +28,15 @@ cd ../02-timer
 ztimer_now_t start = ztimer_now(ZTIMER_MSEC);
 
 /* Setze die Dauer auf 10 Sekunden */
-uint32_t dauer = 10 * MS_PER_SEC;
+uint32_t duration = 10 * MS_PER_SEC;
 
 /* Blinke die LED in einer Schleife. */
-while (timer_laeuft(start, dauer)) {
+while (timer_running(start, duration)) {
     /* Schalte die LED */
     LED0_TOGGLE;
     /* Warte 1 Sekunde */
-    uint32_t warte_zeit = 1 * MS_PER_SEC;
-    ztimer_sleep(ZTIMER_MSEC, warte_zeit);
+    uint32_t wait = 1 * MS_PER_SEC;
+    ztimer_sleep(ZTIMER_MSEC, wait);
 }
 ```
 
@@ -49,25 +49,25 @@ Damit können wir zum Beispiel:
 **Wie funktioniert der Code?**
 
 - Der Timer startet, indem wir den aktuellen Zählerstand mit `ztimer_now` speichern.
-- Wir legen die Zielzeit (`dauer`) auf 10 Sekunden fest.
-- Mit einer `while`-Schleife blinkt die LED so lange, wie die Funktion `timer_laeuft` wahr ist.
-  Die Funktion `timer_laeuft` prüft, ob die vergangene Zeit seit `start` kleiner ist als die Zielzeit.
+- Wir legen die Zielzeit (`duration`) auf 10 Sekunden fest.
+- Mit einer `while`-Schleife blinkt die LED so lange, wie die Funktion `timer_running` wahr ist.
+  Die Funktion `timer_running` prüft, ob die vergangene Zeit seit `start` kleiner ist als die Zielzeit.
 - In jeder Iteration der Schleife schalten wir die LED um (`LED0_TOGGLE`) und lassen das Programm für 1 Sekunde schlafen (`ztimer_sleep`).
 
 ## Aufgabe 2 - LED länger blinken lassen
 
 Ändere das Programm so, dass die LED für 20 Sekunden blinkt und dabei alle 2 Sekunden geschaltet wird.
 
-1. **Passe die Zielzeit (`dauer`) auf 20 Sekunden an:**
+1. **Passe die Zielzeit (`duration`) auf 20 Sekunden an:**
 
    ```c
-   uint32_t dauer = 20 * MS_PER_SEC;
+   uint32_t duration = 20 * MS_PER_SEC;
    ```
 
 2. **Ändere die Wartezeit auf 2 Sekunden:**
 
    ```c
-   uint32_t warte_zeit = 2 * MS_PER_SEC;
+   uint32_t wait = 2 * MS_PER_SEC;
    ```
 
 3. **Baue und flashe die Anwendung erneut:**
@@ -120,7 +120,7 @@ In unserem Fall wollen wir nach Ablauf des Timers die LED1 anschalten.
    ```sh
    make all flash term
    ```
-  
+
    Jetzt sollten folgende Dinge passieren:
 
    - LED0 blinkt weiterhin wie zuvor.

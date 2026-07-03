@@ -1,5 +1,5 @@
 # name of your application
-APPLICATION = hallo-welt
+APPLICATION = hello-world
 
 # If no BOARD is found in the environment, use this default:
 BOARD ?= adafruit-feather-nrf52840-sense

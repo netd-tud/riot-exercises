@@ -39,13 +39,13 @@ Die **serielle Schnittstelle** ist die Kabelverbindung, über die dein Computer 
    Mit dem Befehl `cd` kannst du in einen anderen Ordner wechseln. Gib ein:
 
    ```sh
-   cd aufgaben/01-hallo-welt
+   cd aufgaben/01-hello-world
    ```
 
    Falls du dich in einem anderen Ordner befindest, kannst du mit folgendem Befehl in den richtigen Ordner wechseln:
 
    ```sh
-   cd ../01-hallo-welt
+   cd ../01-hello-world
    ```
 
    - Das `/` trennt Ordner und Unterordner.
@@ -96,7 +96,7 @@ make all flash term
 
 ## Aufgabe 3 - Der Programmcode
 
-Den Programmcode deiner Anwendung findest du im Ordner _01-hallo-welt_ in der Datei `main.c`.
+Den Programmcode deiner Anwendung findest du im Ordner _01-hello-world_ in der Datei `main.c`.
 
 ```c
 int main(void)

@@ -1,22 +1,14 @@
-# name of the application
+# Name des Programmes.
 APPLICATION = timer-example
 
-# If no BOARD is found in the environment, use this default:
+# RIOT-Label für das Microkontroller-Board.
 BOARD ?= adafruit-feather-nrf52840-sense
 
-# This has to be the absolute path to the RIOT base directory:
+# Pfad zum RIOT Betriebssystem im lokalen Dateienverzeichnis.
 RIOTBASE ?= $(CURDIR)/../RIOT
 
-# required modules
+# Benötigte Timer Module.
 USEMODULE += ztimer
 USEMODULE += ztimer_sec
-
-# Comment this out to disable code in RIOT that does safety checking
-# which is not needed in a production environment but helps in the
-# development process:
-DEVELHELP ?= 1
-
-# Change this to 0 show compiler invocation lines by default:
-QUIET ?= 1
 
 include $(RIOTBASE)/Makefile.include

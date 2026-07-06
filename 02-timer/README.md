@@ -3,6 +3,8 @@
 In diesem Beispiel lernst du, wie du die Timer (interne Uhren) deiner Hardware nutzen kannst.
 Wir verwenden den Timer, um zu messen, wie viel Zeit vergeht, und um unser Programm für eine bestimmte Zeit schlafen zu lassen (zu blockieren).
 
+## Vorbereitung: In den richtigen Ordner wechseln
+
 Um in den Ordner der aktuellen Übung zu wechseln, benutze folgenden Befehl im Terminal:
 
 ```sh

@@ -1,36 +1,12 @@
-# RIOT in the Internet of Things - Exercises
+# RIOT im Internet der Dinge - Übungen für Schüler:innen
 
-## Overview
+## Überblick
 
-Collection of practical exercises, assignments, and tasks to become familiar
-with IoT technologies using Linux and RIOT-OS.
+Sammlung von praktischen Übungen, Aufgaben und Aufgabenstellungen, um sich mit IoT-Technologien unter Verwendung von Linux und RIOT-OS vertraut zu machen.
 
-This is a version of https://github.com/inetrg/exercises
-adapted for the hardware kits used at TU Dresden.
+Dies ist eine angepasste Version für Schülerinnen und Schüler mit wenig Vorkentnissen. Im Gegensatz zum master Branch sind die Tutorials auf Deutsch verfasst und beinhalten zusätzliche Erläuterungen von Informatik Konzepten und benutzten Begriffen.
+Aktuell sind nur die ersten 5 Tutorial hier übersetzt.
 
-## Getting started
+## Erste Schritte
 
-Go through the exercises starting with [`00-getting-started`](./00-getting-started/README.md).
-Each exercise contains a `README.md` with detailed instructions and tasks to solve.
-
-
-## Conventions
-Throughout the tutorials, we will specify commands and outputs.
-The conventions are as follows:
-
-**Leading `$` means that the command is executed on the Linux shell:**
-```sh
-$ make
-```
-
-**Leading `>` means that the command is executed on the RIOT shell:**
-```sh
-> help
-```
-
-**No symbol means an output from the RIOT node on the terminal:**
-```sh
-Command              Description
----------------------------------------
-echo                 Echo a message
-```
+Beginne mit den Übungen, beginnend mit [`00-start`](./00-start/README.md). Jede Übung enthält eine `README.md`-Datei mit detaillierten Anweisungen und Aufgaben, die gelöst werden sollen.

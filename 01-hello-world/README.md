@@ -6,7 +6,7 @@ Der Code sieht ähnlich aus wie ein typisches Einsteigerbeispiel in der Programm
 
 ## Aufgabe 1 - Lerne dein Terminal kennen
 
-Ein **Terminal** ist ein Programm auf deinem Computer, in das du Textbefehle eingeben kannst, anstatt mit der Maus zu klicken.
+Ein **Terminal**, häufig auch Kommandozeile genannt, ist ein Programm auf deinem Computer, in das du Textbefehle eingeben kannst, die dann von dem Computer ausgeführt werden.
 Du siehst es in der unteren Hälfte deines Bildschirms:
 
 ```sh
@@ -36,7 +36,7 @@ Die **serielle Schnittstelle** ist die Kabelverbindung, über die dein Computer 
 
 1. **Wechsle im Terminal in das Anwendungsverzeichnis:**
    Das Terminal hat immer einen aktuellen *Pfad*, der zeigt, in welchem Ordner du dich gerade befindest.
-   Mit dem Befehl `cd` kannst du in einen anderen Ordner wechseln. Gib ein:
+   Mit dem Befehl `cd` ("change directory") kannst du in einen anderen Ordner wechseln. Gib ein:
 
    ```sh
    cd aufgaben/01-hello-world
@@ -96,7 +96,7 @@ make all flash term
 
 ## Aufgabe 3 - Der Programmcode
 
-Den Programmcode deiner Anwendung findest du im Ordner _01-hello-world_ in der Datei `main.c`.
+Den Programmcode deiner Anwendung findest du im Ordner *01-hello-world* in der Datei `main.c`.
 
 ```c
 int main(void)
@@ -112,7 +112,7 @@ int main(void)
 
 ### Erklärung
 
-- Die `main`-Funktion ist der Einstiegspunkt des Programms. Sie wird automatisch von RIOT aufgerufen, sobald das Board startet.
+- Die `main`-Funktion ist der Einstiegspunkt des Programms. Sie wird ausgeführt, sobald das Board startet.
 - Mit der Funktion `printf` kannst du Text ausgeben. Dieser Text wird über die serielle Schnittstelle an deinen Computer gesendet und im Terminal angezeigt.
 - Die Konstanten `RIOT_BOARD` und `RIOT_CPU` enthalten Informationen über die Hardware und werden von RIOT automatisch festgelegt, wenn du das Programm baust.
 - Mit `return 0` wird das Programm beendet. Die Null signalisiert, dass das Programm erfolgreich ausgeführt wurde.

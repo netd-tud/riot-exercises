@@ -1,6 +1,6 @@
 # Einfaches Timer-Beispiel
 
-In diesem Beispiel lernst du, wie du die Timer (interne Uhren) deiner Hardware nutzen kannst.
+In diesem Beispiel lernst du, wie du die Timer deiner Hardware nutzen kannst.
 Wir verwenden den Timer, um zu messen, wie viel Zeit vergeht, und um unser Programm für eine bestimmte Zeit schlafen zu lassen (zu blockieren).
 
 ## Vorbereitung: In den richtigen Ordner wechseln
@@ -43,18 +43,19 @@ while (timer_running(start, duration)) {
 ```
 
 In diesem Beispiel verwenden wir die Bibliothek `ztimer`, um Timer zu steuern.
-Damit können wir zum Beispiel:
+Eine **Bibliothek** ist eine Sammlung fertiger Code-Bausteine, die du in deinem Programm nutzen kannst.
+Mit der `ztimer` Bibliothek können wir zum Beispiel:
 
 - den aktuellen Timer-Zählstand lesen (`ztimer_now`)
 - unser Programm für eine bestimmte Zeit pausieren (`ztimer_sleep`)
 
 **Wie funktioniert der Code?**
 
-- Der Timer startet, indem wir den aktuellen Zählerstand mit `ztimer_now` speichern.
-- Wir legen die Zielzeit (`duration`) auf 10 Sekunden fest.
-- Mit einer `while`-Schleife blinkt die LED so lange, wie die Funktion `timer_running` wahr ist.
+1. Der Timer startet, indem wir den aktuellen Zählerstand mit `ztimer_now` speichern.
+2. Wir legen die Zielzeit (`duration`) auf 10 Sekunden fest.
+3. Mit einer `while`-Schleife blinkt die LED so lange, wie die Funktion `timer_running` wahr ist.
   Die Funktion `timer_running` prüft, ob die vergangene Zeit seit `start` kleiner ist als die Zielzeit.
-- In jeder Iteration der Schleife schalten wir die LED um (`LED0_TOGGLE`) und lassen das Programm für 1 Sekunde schlafen (`ztimer_sleep`).
+4. In jeder Iteration der Schleife schalten wir die LED um (`LED0_TOGGLE`) und lassen das Programm für 1 Sekunde schlafen (`ztimer_sleep`).
 
 ## Aufgabe 2 - LED länger blinken lassen
 

@@ -141,7 +141,6 @@ Falls doch etwas mitgegeben wurde, gibt das Programm einen Hinweis zur richtigen
 ### Schritt 2: Die Hardware-Informationen einbinden
 
 Damit das Programm weiß, was eine LED ist und wie es sie ansprechen soll, musst du eine sogenannte **Bibliothek** einbinden.
-Eine **Bibliothek** ist eine Sammlung fertiger Code-Bausteine, die du in deinem Programm nutzen kannst.
 Füge ganz oben in der Datei `main.c` diese Zeile ein:
 
 ```c

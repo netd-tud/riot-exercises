@@ -4,7 +4,7 @@ Wie du bereits in **Aufgabe 1** des ersten Tutorials gelernt hast, ist ein **Ter
 Dort siehst du eine Eingabeaufforderung, die etwa so aussieht:
 
 ```sh
-pi@riot-raspi-0ac8c0:~/workspace $
+user@...:~/riot-exercises $
 ```
 
 Das Terminal ist also das Fenster, über das du mit deinem Computer oder deinem RIOT-Board kommunizierst.

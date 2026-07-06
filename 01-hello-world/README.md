@@ -10,7 +10,7 @@ Ein **Terminal**, häufig auch Kommandozeile genannt, ist ein Programm auf deine
 Du siehst es in der unteren Hälfte deines Bildschirms:
 
 ```sh
-pi@riot-raspi-0ac8c0:~/workspace $
+user@...:~/riot-exercises $
 ```
 
 Mit dem Terminal kannst du zum Beispiel:

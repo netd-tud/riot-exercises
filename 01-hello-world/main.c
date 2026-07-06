@@ -7,7 +7,6 @@
  */
 
 #include <stdio.h>
-#include "ztimer.h"
 
 int main(void)
 {

@@ -27,18 +27,18 @@ cd ../02-timer
 
 ```c
 /* Lese den aktuellen Timer-Zählstand */
-ztimer_now_t start = ztimer_now(ZTIMER_MSEC);
+ztimer_now_t start = ztimer_now(ZTIMER_SEC);
 
 /* Setze die Dauer auf 10 Sekunden */
-uint32_t duration = 10 * MS_PER_SEC;
+uint32_t duration = 10;
 
 /* Blinke die LED in einer Schleife. */
 while (timer_running(start, duration)) {
     /* Schalte die LED */
     LED0_TOGGLE;
     /* Warte 1 Sekunde */
-    uint32_t wait = 1 * MS_PER_SEC;
-    ztimer_sleep(ZTIMER_MSEC, wait);
+    uint32_t wait = 1;
+    ztimer_sleep(ZTIMER_SEC, wait);
 }
 ```
 
@@ -64,13 +64,13 @@ Mit der `ztimer` Bibliothek können wir zum Beispiel:
 1. **Passe die Zielzeit (`duration`) auf 20 Sekunden an:**
 
    ```c
-   uint32_t duration = 20 * MS_PER_SEC;
+   uint32_t duration = 20;
    ```
 
 2. **Ändere die Wartezeit auf 2 Sekunden:**
 
    ```c
-   uint32_t wait = 2 * MS_PER_SEC;
+   uint32_t wait = 2;
    ```
 
 3. **Baue und flashe die Anwendung erneut:**

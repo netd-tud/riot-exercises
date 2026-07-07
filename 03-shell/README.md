@@ -25,13 +25,12 @@ Um in den Ordner der aktuellen Übung zu wechseln, benutze folgenden Befehl im T
 cd ../03-shell
 ```
 
-## Eigene Befehle erstellen
+## Wie werden Befehle erstellt?
 
-Um einen neuen Befehl zu der RIOT Shell hinzuzufügen, musst du zwei Dinge tun:
 
 ### Schritt 1: Den Befehl registrieren
 
-Zuerst meldest du den Befehl mit dem sogenannten `SHELL_COMMAND`-**Makro** an.
+Zuerst wird der Befehl mit dem sogenannten `SHELL_COMMAND`-**Makro** angemeldet.
 Ein **Makro** ist eine Art Abkürzung im Code. Es steht für eine längere Anweisung, die automatisch vom Computer ergänzt wird. So sieht das aus:
 
 ```c
@@ -46,7 +45,7 @@ Die drei Angaben in den Klammern bedeuten:
 
 ### Schritt 2: Die Funktion definieren
 
-Als Nächstes schreibst du die Funktion, die beim Aufrufen des Befehls ausgeführt werden soll:
+Als Nächstes wird die Funktion geschrieben, die beim Aufrufen des Befehls ausgeführt werden soll:
 
 ```c
 int echo_command(int argc, char **argv)

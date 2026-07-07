@@ -39,7 +39,7 @@ Die **serielle Schnittstelle** ist die Kabelverbindung, über die dein Computer 
    Mit dem Befehl `cd` ("change directory") kannst du in einen anderen Ordner wechseln. Gib ein:
 
    ```sh
-   cd aufgaben/01-hello-world
+   cd 01-hello-world
    ```
 
    Falls du dich in einem anderen Ordner befindest, kannst du mit folgendem Befehl in den richtigen Ordner wechseln:

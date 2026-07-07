@@ -12,7 +12,7 @@
 #include "board.h"
 
 /* Gibt true zurück wenn die Zeit abgelaufen ist, ansonsten false. */
-bool timer_done(ztimer_now_t start, uint32_t duration)
+bool timer_running(ztimer_now_t start, uint32_t duration)
 {
     uint32_t now = ztimer_now(ZTIMER_SEC);
     return (now - start) < duration;

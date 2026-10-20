@@ -1,11 +1,11 @@
-# name of your application
+# Name of your application
 APPLICATION = BLE_multihop_central
 
-# If no BOARD is found in the environment, use this default:
+# This application is built for the following board
 BOARD ?= adafruit-feather-nrf52840-sense
 
-# This has to be the absolute path to the RIOT base directory:
-RIOTBASE ?= $(CURDIR)/../RIOT
+# This is the path to the RIOT base directory
+RIOTBASE ?= $(CURDIR)/../..
 
 # Include a directory for necessary header files in main.c
 CFLAGS += -I$(RIOTBASE)/build/pkg/nimble/nimble/host/src

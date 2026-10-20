@@ -77,7 +77,13 @@ int central_conn_event(struct ble_gap_event *event, void *arg)
     switch (event->type) {
     case BLE_GAP_EVENT_CONNECT:
         conn_state = 1;
+        
+        
+        
         /* [TASK 2: Achieve service discovery. If failed, terminate the connection and re-scan] */
+
+
+
 
         return 0;
     case BLE_GAP_EVENT_DISCONNECT:
@@ -85,7 +91,11 @@ int central_conn_event(struct ble_gap_event *event, void *arg)
         scan();
         return 0;
 
+
+
     /* [TASK 3: Print out the received data] */
+
+
 
 
     }
@@ -122,7 +132,13 @@ int central_scan_event(struct ble_gap_event *event, void *arg)
 
 void scan(void)
 {
+
+
+
     /* [TASK 1: Set scan parameters, and perform discovery procedure] */
+
+
+
 
 }
 

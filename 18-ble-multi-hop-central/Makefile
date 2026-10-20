@@ -5,7 +5,7 @@ APPLICATION = BLE_multihop_central
 BOARD ?= adafruit-feather-nrf52840-sense
 
 # This is the path to the RIOT base directory
-RIOTBASE ?= $(CURDIR)/../..
+RIOTBASE ?= $(CURDIR)/../RIOT
 
 # Include a directory for necessary header files in main.c
 CFLAGS += -I$(RIOTBASE)/build/pkg/nimble/nimble/host/src

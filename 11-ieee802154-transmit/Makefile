@@ -5,7 +5,7 @@ APPLICATION = IEEE802154_transmit
 BOARD ?= adafruit-feather-nrf52840-sense
 
 # This is the path to the RIOT base directory
-RIOTBASE ?= $(CURDIR)/../..
+RIOTBASE ?= $(CURDIR)/../RIOT
 
 # Some RIOT modules needed for this example
 USEMODULE += ztimer_msec

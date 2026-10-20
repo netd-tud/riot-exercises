@@ -5,7 +5,7 @@ APPLICATION = IEEE802154_receive
 BOARD ?= adafruit-feather-nrf52840-sense
 
 # This is the path to the RIOT base directory
-RIOTBASE ?= $(CURDIR)/../..
+RIOTBASE ?= $(CURDIR)/../RIOT
 
 # Include netdev and gnrc modules
 USEMODULE += netdev_default

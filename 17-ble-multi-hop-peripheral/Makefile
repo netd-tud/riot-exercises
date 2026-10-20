@@ -5,7 +5,7 @@ APPLICATION = BLE_multihop_peripheral
 BOARD ?= adafruit-feather-nrf52840-sense
 
 # This has to be the absolute path to the RIOT base directory:
-RIOTBASE ?= $(CURDIR)/../..
+RIOTBASE ?= $(CURDIR)/../RIOT
 
 # Some RIOT modules needed for this example
 USEMODULE += random

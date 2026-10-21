@@ -43,17 +43,7 @@ void *tx_thread(void *arg)
 
 
         /* [TASK 2: Generate, send and print UDP data.] */
-        uint8_t payload[5];
-        uint8_t random_data = random_uint32_range(0, 256);
-        for (uint8_t i = 0; i < sizeof(payload); i++) {
-            payload[i] = random_data;
-        }
-        sock_udp_send(&sock, payload, sizeof(payload), &remote);
-        printf("TX: ");
-        for (unsigned i = 0; i < sizeof(payload); i++) {
-            printf("%02x ", payload[i]);
-        }
-        printf("\n");
+
 
 
 
@@ -75,14 +65,7 @@ void *rx_thread(void *arg)
 
 
         /* [TASK 3: Receive and print UDP data.] */
-        int len = sock_udp_recv(&sock, buf, sizeof(buf), SOCK_NO_TIMEOUT, NULL);
-        if (len > 0) {
-            printf("RX: ");
-            for (int i = 0; i < len; i++) {
-                printf("%02x ", buf[i]);
-            }
-            printf("\n");
-        }
+
 
 
 
@@ -97,9 +80,7 @@ int main(void)
 
 
     /* [TASK 1: Creat a socket object and bind to the PORT (1234).] */
-    sock_udp_ep_t local = SOCK_IPV6_EP_ANY;
-    local.port = PORT;
-    sock_udp_create(&sock, &local, NULL, 0);
+
 
 
 

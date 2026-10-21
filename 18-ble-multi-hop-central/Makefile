@@ -1,4 +1,4 @@
-# Name of your application
+# Name of the application
 APPLICATION = BLE_multihop_central
 
 # This application is built for the following board

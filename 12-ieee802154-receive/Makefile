@@ -1,4 +1,4 @@
-# Name of your application
+# Name of the application
 APPLICATION = IEEE802154_receive
 
 # This application is built for the following board

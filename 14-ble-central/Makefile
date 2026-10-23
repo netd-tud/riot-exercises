@@ -1,14 +1,13 @@
-# name of your application
-APPLICATION = BLE_peripheral
+# Name of the application
+APPLICATION = BLE_central
 
-# If no BOARD is found in the environment, use this default:
+# This application is built for the following board
 BOARD ?= adafruit-feather-nrf52840-sense
 
-# This has to be the absolute path to the RIOT base directory:
+# This is the path to the RIOT base directory
 RIOTBASE ?= $(CURDIR)/../RIOT
 
 # Some RIOT modules needed for this example
-USEMODULE += random
 USEMODULE += ztimer_sec
 
 # Include NimBLE

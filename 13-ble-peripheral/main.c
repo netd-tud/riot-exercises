@@ -86,7 +86,11 @@ int peripheral_conn_event(struct ble_gap_event *event, void *arg)
         advertise();
         return 0;
 
+
+
     /* [TASK 3: Check if someone subscribed to our custom characteristic] */
+
+
 
 
     case BLE_GAP_EVENT_NOTIFY_TX:
@@ -120,7 +124,12 @@ void advertise(void)
     fields.num_uuids16 = 1;
     fields.uuids16_is_complete = 1;
 
+
+
     /* [TASK 1: Start advertising here] */
+
+
+
 
 }
 
@@ -131,7 +140,11 @@ int main(void)
     rc = ble_svc_gap_device_name_set(device_name);
     assert(rc == 0);
 
+
+
     /* [TASK 2: Add our custom service, and reload the GATT server] */
+
+
 
 
     /* addr_type will store type of address we use */

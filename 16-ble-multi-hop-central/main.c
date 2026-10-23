@@ -1,11 +1,11 @@
 /*
- * Copyright (C) 2025 TU Dresden
+ * Copyright (C) 2026 TU Dresden
  *
  * This file is subject to the terms and conditions of the GNU Lesser
  * General Public License v2.1. See the file LICENSE in the top level
  * directory for more details.
  *
- * @brief       BLE_central
+ * @brief       BLE_multihop_central
  * @author      Bozheng Pang <bozheng.pang@tu-dresden.de>
  */
 
@@ -13,21 +13,25 @@
 #include "host/util/util.h"
 #include "host/ble_gap.h"
 #include "services/gap/ble_svc_gap.h"
+#include "ble_hs_conn_priv.h"
 
 /* Define UUIDs. */
-#define BLE_SVC_CUSTOM_UUID                         0xff00
-#define BLE_CHR_CUSTOM_NOTIFY_UUID                  0xee00
+#define CUSTOM_SVC_UUID                         0xff00
+#define CUSTOM_CHR_NOTIFY_UUID                  0xee00
+#define CUSTOM_CHR_WRITE_UUID                   0xee01
 /* Convert UUIDs to ble_uuid16_t. */
-ble_uuid16_t custom_svc_uuid = BLE_UUID16_INIT(BLE_SVC_CUSTOM_UUID);
-ble_uuid16_t custom_chr_uuid = BLE_UUID16_INIT(BLE_CHR_CUSTOM_NOTIFY_UUID);
+ble_uuid16_t custom_svc_uuid = BLE_UUID16_INIT(CUSTOM_SVC_UUID);
+ble_uuid16_t custom_chr_notify_uuid = BLE_UUID16_INIT(CUSTOM_CHR_NOTIFY_UUID);
+ble_uuid16_t custom_chr_write_uuid = BLE_UUID16_INIT(CUSTOM_CHR_WRITE_UUID);
 /* Define variables that will be used later. */
 uint8_t addr_type;
 uint8_t conn_state;
-uint8_t notify_state;
 /* Define a variable to store the characteristic value handle */
 uint16_t custom_chr_val_handle;
 /* Define a variable to manually set Client Characteristic Configuration (CCC) descriptor handle */
 uint16_t custom_chr_ccc_handle;
+/* Define a variable to store the write characteristic value handle */
+uint16_t custom_write_data_val_handle;
 
 void scan(void);
 
@@ -38,16 +42,23 @@ int discover_chr_cb(uint16_t conn_handle, const struct ble_gatt_error *error,
     (void)error;
 
     if (chr != NULL) {
-        /* Check if this is our desired characteristic */
-        if (ble_uuid_cmp(&chr->uuid.u, &custom_chr_uuid.u) == 0) {
+        /* Check if this is the notify characteristic */
+        if (ble_uuid_cmp(&chr->uuid.u, &custom_chr_notify_uuid.u) == 0) {
             custom_chr_val_handle = chr->val_handle;
             custom_chr_ccc_handle = chr->val_handle + 1;
-
             /* Enable notifications by writing 0x0001 to the CCC handle */
             uint16_t value[1] = {0x0001};
             ble_gattc_write_flat(conn_handle, custom_chr_ccc_handle,
                                 value, sizeof(value), NULL, NULL);
         }
+
+
+
+        /* [TASK 2: Discover the write characteristic from the peripheral device.] */
+
+
+
+
     }
 
     return 0;
@@ -77,16 +88,56 @@ int central_conn_event(struct ble_gap_event *event, void *arg)
     switch (event->type) {
     case BLE_GAP_EVENT_CONNECT:
         conn_state = 1;
-        /* [TASK 2: Achieve service discovery. If failed, terminate the connection and re-scan] */
-
+        /* Achieve service discovery. If failed, terminate the connection and re-scan */
+        uint16_t conn_handle = event->connect.conn_handle;
+        int rc = ble_gattc_disc_svc_by_uuid(conn_handle, &custom_svc_uuid.u, 
+                                        discover_svc_cb, NULL);
+        if (rc != 0) {
+            ble_gap_terminate(event->connect.conn_handle, BLE_ERR_REM_USER_CONN_TERM);
+            conn_state = 0;
+            scan();
+        } else {
+            /* If this device is not connected to two other devices, keep scanning */
+            int idx = 0;
+            struct ble_hs_conn *c;
+            while ((c = ble_hs_conn_find_by_idx(idx)) != NULL) {
+                idx++;
+            }
+            if (idx < 2) {
+                scan();
+            }
+        }
         return 0;
     case BLE_GAP_EVENT_DISCONNECT:
         conn_state = 0;
         scan();
         return 0;
 
-    /* [TASK 3: Print out the received data] */
+    /* Print and forward the received data */
+    case BLE_GAP_EVENT_NOTIFY_RX:
+        printf("Central: received data --> ");
+        for (uint8_t i = 0; i < event->notify_rx.om->om_len; i++) {
+            printf("%02x ", event->notify_rx.om->om_data[i]);
+        }
+        printf("\n");
 
+        int idx = 0;
+        struct ble_hs_conn *c;
+        while ((c = ble_hs_conn_find_by_idx(idx)) != NULL) {
+            if (c->bhc_handle != event->notify_rx.conn_handle) {
+
+
+
+                /* [TASK 3: Forward the received data to the other connected peripheral device using the write characteristic.] */
+
+
+
+
+            }
+            idx++;
+        }
+
+        return 0;
 
     }
     return 0;
@@ -96,11 +147,7 @@ int central_scan_event(struct ble_gap_event *event, void *arg)
 {
     (void)arg;
 
-    const ble_uuid16_t predef_uuid = custom_svc_uuid;
-
     struct ble_hs_adv_fields parsed_fields;
-    int uuid_cmp_result;
-
     memset(&parsed_fields, 0, sizeof(parsed_fields));
 
     switch (event->type) {
@@ -109,8 +156,7 @@ int central_scan_event(struct ble_gap_event *event, void *arg)
         return 0;
     case BLE_GAP_EVENT_DISC:
         ble_hs_adv_parse_fields(&parsed_fields, event->disc.data, event->disc.length_data);
-        uuid_cmp_result = ble_uuid_cmp(&predef_uuid.u, &parsed_fields.uuids16->u);
-        if (uuid_cmp_result == 0) {
+        if (ble_uuid_cmp(&custom_svc_uuid.u, &parsed_fields.uuids16->u) == 0) {
             ble_gap_disc_cancel();
             ble_gap_connect(addr_type, &(event->disc.addr), 100,
                             NULL, central_conn_event, NULL);
@@ -122,8 +168,10 @@ int central_scan_event(struct ble_gap_event *event, void *arg)
 
 void scan(void)
 {
-    /* [TASK 1: Set scan parameters, and perform discovery procedure] */
-
+    /* Set scan parameters, and perform discovery procedure */
+    const struct ble_gap_disc_params scan_params = {10000, 200, 0, 0, 0, 1};
+    int rc = ble_gap_disc(addr_type, 100, &scan_params, central_scan_event, NULL);
+    assert(rc == 0);
 }
 
 int main(void)
@@ -141,14 +189,8 @@ int main(void)
     while (1) {
         if (conn_state == 0) {
             printf("Central: Not connected\n");
-        } else {
-            if (notify_state == 0) {
-                printf("Central: Connected but not receiving notification\n");
-            } else {
-                printf("Central: Connected and receiving notification\n");
-            }
         }
-        ztimer_sleep(ZTIMER_SEC, 1);
+        ztimer_sleep(ZTIMER_SEC, 5);
     }
 
     return 0;

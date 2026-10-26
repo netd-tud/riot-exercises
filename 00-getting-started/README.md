@@ -21,9 +21,9 @@ When opening the RIOT Kit, you will find the following content:
 1. [**Raspberry Pi**](https://www.raspberrypi.com/documentation/computers/getting-started.html)
   already completely setup to be used as development machine throughout these exercises.
 2. **Power Adapter for the Raspberry Pi**
-3. [**Adafruit Feather Sense**](https://learn.adafruit.com/adafruit-feather-sense) (12x) (RFM98 @ 433 MHz):
+3. [**Adafruit Feather Sense**](https://learn.adafruit.com/adafruit-feather-sense) (3x) (RFM98 @ 433 MHz):
   an IoT device featuring wireless connectivity and many on-board sensors
-4. **USB Cable** (12x) to connect the Feather Sense to the development machine
+4. **USB Cable** (3x) to connect the Feather Sense to the development machine
 5. [**Adafruit LoRa Radio FeatherWing**](https://learn.adafruit.com/radio-featherwing):
   an extension board for kilometer-range wireless connectivity using LoRa
 6. **Jumper Cable** (12x) to connect external devices such as LEDs or buttons to the Feather Sense
